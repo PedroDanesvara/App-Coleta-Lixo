@@ -1,4 +1,0 @@
-Django==4.2.1
-psycopg
-psycopg-binary
-gunicorn==20.1.0
