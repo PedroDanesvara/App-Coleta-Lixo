@@ -1,8 +1,8 @@
 <libraries>
   <library
-      name="__local_aars__:C:\Users\caioc\Desktop\Programacao\app_coleta_lixo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="C:\Users\caioc\Desktop\Programacao\app_coleta_lixo\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:C:\Users\caioc\Desktop\Programacao\app_coleta_lixo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
       name="io.flutter:flutter_embedding_release:1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d@jar"
       jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\io.flutter\flutter_embedding_release\1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d\7b78fb4a8a09dd69a2d68d998b9a034ec2895610\flutter_embedding_release-1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d.jar"
