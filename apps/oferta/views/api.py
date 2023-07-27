@@ -29,7 +29,7 @@ def ofertaList(request):
 def ofertaDetail(request, pk):
     oferta = Oferta.objects.get(id=pk)
     serializer = OfertaSerializer(oferta, many=False)
-    return Responde(serializer.data)
+    return Response(serializer.data)
 
 
 @api_view(["POST"])
@@ -45,7 +45,7 @@ def ofertaCreate(request):
 @api_view(["PATCH"])
 def ofertaUpdate(request, pk):
     oferta = Oferta.objects.get(id=pk)
-    serializer = OfertaSerializer(instance=ofesta, data=request.data)
+    serializer = OfertaSerializer(instance=oferta, data=request.data)
 
     if serializer.is_valid():
         serializer.save()
