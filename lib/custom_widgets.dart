@@ -25,38 +25,7 @@ class DarkSwitchState extends State<DarkSwitch> {
   }
 }
 
-//Widget da Checkbox da página de cadastro
-// class SignupCheckbox extends StatefulWidget {
-//   const SignupCheckbox({super.key});
-
-//   @override
-//   State<SignupCheckbox> createState() => _SignupCheckboxState();
-// }
-
-// class _SignupCheckboxState extends State<SignupCheckbox> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return CheckboxListTile(
-//       controlAffinity: ListTileControlAffinity.leading,
-//       value: AppController.instance.isCheckboxConfirmed,
-//       activeColor: primary,
-//       onChanged: (value) {
-//         setState(() {
-//           AppController.instance.checkboxSet();
-//         });
-//       },
-//       title: Text(
-//         'Ao se cadastrar, você concorda com nossos Termos de Uso e Política de Privacidade',
-//         style: TextStyle(
-//             color: grayScale.shade800,
-//             fontFamily: 'Roboto',
-//             fontSize: 14,
-//             fontWeight: FontWeight.w400),
-//       ),
-//     );
-//   }
-// }
-
+//Widget da Ckeckbox da página de cadastro
 class SignupCheckbox extends StatefulWidget {
   const SignupCheckbox({super.key});
 
@@ -69,7 +38,7 @@ class _SignupCheckboxState extends State<SignupCheckbox> {
   Widget build(BuildContext context) {
     return Material(
       child: Checkbox(
-        value: AppController.instance.isCheckboxConfirmed,
+        value: AppController.instance.isSignUpCheckboxConfirmed,
         onChanged: (value) {
           setState(() {
             AppController.instance.checkboxSet();
@@ -77,5 +46,14 @@ class _SignupCheckboxState extends State<SignupCheckbox> {
         },
       ),
     );
+  }
+}
+
+//Classe pra remover o indicador de scroll de algumas páginas
+class ScrollRemove extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }

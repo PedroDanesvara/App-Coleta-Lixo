@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+//Controlador geral dos widgets do aplicativo
 class AppController extends ChangeNotifier {
   static AppController instance = AppController();
 
   bool isDarkTheme = false;
-  bool isCheckboxConfirmed = false;
+  bool isSignUpCheckboxConfirmed = false;
+  bool changeSomething = false;
 
   //Função para alterar estado do switch de Dark Mode
   changeTheme() {
@@ -14,7 +16,12 @@ class AppController extends ChangeNotifier {
 
   //Função para alterar estado da Checbox da página de cadastro
   checkboxSet() {
-    isCheckboxConfirmed = !isCheckboxConfirmed;
+    isSignUpCheckboxConfirmed = !isSignUpCheckboxConfirmed;
+    notifyListeners();
+  }
+
+  changeBool() {
+    changeSomething = !changeSomething;
     notifyListeners();
   }
 }
