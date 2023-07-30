@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_widgets.dart';
 import 'package:flutter/material.dart';
 import 'app_controller.dart';
@@ -22,185 +21,196 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = '';
   String confirmPassword = '';
 
-  Widget _body() {
-    return AnimatedBuilder(
-      animation: AppController.instance,
-      builder: (context, child) {
-        return SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: SafeArea(
-              child: ScrollConfiguration(
-                behavior: ScrollRemove(),
-                child: ListView(children: [
-                  Container(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        child: SvgPicture.asset('assets/images/logo.svg',
-                            height: 40),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'Cadastro',
-                          style: TextStyle(
+  Future<bool> _onWillPop() async {
+    if (AppController.instance.isSignUpCheckboxConfirmed) {
+      AppController.instance.checkboxSet();
+      return true;
+    } else {
+      return true;
+    }
+  }
 
-                              //If-else pra trocar a cor do texto do botão de
-                              //"Cadastrar" para deixar mais visível no Dark Mode.
-                              color: AppController.instance.isDarkTheme
-                                  ? MyColors.primary[300]
-                                  : MyColors.primary,
-                              fontSize: 32,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Roboto'),
+  Widget _body() {
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: AnimatedBuilder(
+        animation: AppController.instance,
+        builder: (context, child) {
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: SafeArea(
+                child: ScrollConfiguration(
+                  behavior: ScrollRemove(),
+                  child: ListView(children: [
+                    Container(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child:
+                              Image.asset('assets/images/logo.png', height: 40),
                         ),
-                      ),
-                    ],
-                  ),
-                  Container(height: 80),
-                  Column(
-                    children: [
-                      //Campo de texto para o nome
-                      TextField(
-                        onChanged: (text) {
-                          name = text;
-                        },
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                          labelText: 'Nome',
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextField(
-                        onChanged: (text) {
-                          name = text;
-                        },
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                          labelText: 'Sobrenome',
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextField(
-                        onChanged: (text) {
-                          emailOrPassword = text;
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          labelText: 'Email ou telefone',
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextField(
-                        onChanged: (text) {
-                          password = text;
-                        },
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Senha',
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextField(
-                        onChanged: (text) {
-                          confirmPassword = text;
-                        },
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Confirmar senha',
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Row(children: [
-                    const SignupCheckbox(),
-                    Expanded(
-                      child: RichText(
-                        overflow: TextOverflow.clip,
-                        text: TextSpan(text: "", children: [
-                          TextSpan(
-                            text: "Ao se cadastrar, você concorda com nossos",
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            'Cadastro',
                             style: TextStyle(
+
+                                //If-else pra trocar a cor do texto do botão de
+                                //"Cadastrar" para deixar mais visível no Dark Mode.
                                 color: AppController.instance.isDarkTheme
-                                    ? MyColors.darkGrayScale[50]
-                                    : MyColors.darkGrayScale[700]),
+                                    ? MyColors.primary[300]
+                                    : MyColors.primary,
+                                fontSize: 32,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Roboto'),
                           ),
-                          TextSpan(
-                            style: TextStyle(
-                                color: AppController.instance.isDarkTheme
-                                    ? MyColors.lightBlueScale[200]
-                                    : MyColors.lightBlueScale[700]),
-                            text: " Termos de Uso",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(context).pushNamed('/tou');
-                              },
-                          ),
-                          TextSpan(
-                            style: TextStyle(
-                                color: AppController.instance.isDarkTheme
-                                    ? MyColors.darkGrayScale[50]
-                                    : MyColors.darkGrayScale[700]),
-                            text: " e",
-                          ),
-                          TextSpan(
-                            style: TextStyle(
-                                color: AppController.instance.isDarkTheme
-                                    ? MyColors.lightBlueScale[200]
-                                    : MyColors.lightBlueScale[700]),
-                            text: " Política de Privacidade",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(context).pushNamed('/ppp');
-                              },
-                          ),
-                        ]),
-                      ),
+                        ),
+                      ],
                     ),
-                  ]),
-                  Row(
-                    children: [
-                      Flexible(
+                    Container(height: 80),
+                    Column(
+                      children: [
+                        //Campo de texto para o nome
+                        TextField(
+                          onChanged: (text) {
+                            name = text;
+                          },
+                          keyboardType: TextInputType.name,
+                          decoration: const InputDecoration(
+                            labelText: 'Nome',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          onChanged: (text) {
+                            name = text;
+                          },
+                          keyboardType: TextInputType.name,
+                          decoration: const InputDecoration(
+                            labelText: 'Sobrenome',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          onChanged: (text) {
+                            emailOrPassword = text;
+                          },
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            labelText: 'Email ou telefone',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          onChanged: (text) {
+                            password = text;
+                          },
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: 'Senha',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          onChanged: (text) {
+                            confirmPassword = text;
+                          },
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: 'Confirmar senha',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    Row(children: [
+                      const SignupCheckbox(),
+                      Expanded(
+                        child: RichText(
+                          overflow: TextOverflow.clip,
+                          text: TextSpan(text: "", children: [
+                            TextSpan(
+                              text: "Ao se cadastrar, você concorda com nossos",
+                              style: TextStyle(
+                                  color: AppController.instance.isDarkTheme
+                                      ? MyColors.darkGrayScale[50]
+                                      : MyColors.darkGrayScale[700]),
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: AppController.instance.isDarkTheme
+                                      ? MyColors.lightBlueScale[200]
+                                      : MyColors.lightBlueScale[700]),
+                              text: " Termos de Uso",
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.of(context).pushNamed('/tou');
+                                },
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: AppController.instance.isDarkTheme
+                                      ? MyColors.darkGrayScale[50]
+                                      : MyColors.darkGrayScale[700]),
+                              text: " e",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: AppController.instance.isDarkTheme
+                                      ? MyColors.lightBlueScale[200]
+                                      : MyColors.lightBlueScale[700]),
+                              text: " Política de Privacidade",
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.of(context).pushNamed('/ppp');
+                                },
+                            ),
+                          ]),
+                        ),
+                      ),
+                    ]),
+                    Row(
+                      children: [
+                        Flexible(
                           child: AnimatedButton.strip(
                               isSelected: AppController
                                   .instance.isSignUpCheckboxConfirmed,
                               animationDuration:
-                                  const Duration(milliseconds: 350),
-                              isReverse: true,
-                              stripTransitionType:
-                                  StripTransitionType.LEFT_TO_RIGHT,
+                                  const Duration(milliseconds: 300),
+                              isReverse: false,
                               selectedBackgroundColor: const Color(0xFF439472),
                               backgroundColor: const Color(0xFF1F1F1F),
+                              stripTransitionType:
+                                  StripTransitionType.LEFT_TO_RIGHT,
                               selectedTextColor: AppController
                                       .instance.isSignUpCheckboxConfirmed
                                   ? const Color.fromARGB(255, 255, 255, 255)
@@ -220,61 +230,70 @@ class _SignUpPageState extends State<SignUpPage> {
                                       : MyColors.darkGrayScale[200],
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  fontFamily: 'Roboto')))
-                    ],
-                  ),
-                  Container(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Flexible(
-                        //Botão pressionável de "Cadastrar"
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 2,
-                            shadowColor:
-                                const Color.fromARGB(216, 255, 255, 255),
-                            //If-else pra trocar a cor do botão "Cadastrar" para
-                            //deixar adaptável ao Dark Mode.
-                            backgroundColor: AppController.instance.isDarkTheme
-                                ? MyColors.grayScale
-                                : Colors.white,
-                            minimumSize: const Size.fromHeight(50),
-                          ),
-                          onPressed: () {
-                            AppController.instance.checkboxSet();
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'Voltar',
-                            style: TextStyle(
+                                  fontFamily: 'Roboto')),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Flexible(
+                          //Botão pressionável de "Cadastrar"
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 2,
+                              shadowColor:
+                                  const Color.fromARGB(216, 255, 255, 255),
+                              //If-else pra trocar a cor do botão "Cadastrar" para
+                              //deixar adaptável ao Dark Mode.
+                              backgroundColor:
+                                  AppController.instance.isDarkTheme
+                                      ? MyColors.grayScale
+                                      : Colors.white,
+                              minimumSize: const Size.fromHeight(50),
+                            ),
+                            onPressed: () {
+                              if (AppController
+                                      .instance.isSignUpCheckboxConfirmed ==
+                                  true) {
+                                AppController.instance.checkboxSet();
+                                Navigator.pop(context);
+                              } else {
+                                Navigator.pop(context);
+                              }
+                            },
+                            child: Text(
+                              'Voltar',
+                              style: TextStyle(
 
-                                //If-else pra trocar a cor do texto do botão de
-                                //"Cadastrar" para deixar mais visível no Dark Mode.
-                                color: AppController.instance.isDarkTheme
-                                    ? MyColors.primary[300]
-                                    : MyColors.primary,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Roboto'),
+                                  //If-else pra trocar a cor do texto do botão de
+                                  //"Cadastrar" para deixar mais visível no Dark Mode.
+                                  color: AppController.instance.isDarkTheme
+                                      ? MyColors.primary[300]
+                                      : MyColors.primary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Roboto'),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                ]),
+                      ],
+                    ),
+                    Container(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                  ]),
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

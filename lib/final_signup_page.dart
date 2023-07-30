@@ -20,7 +20,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ListView(children: [
+              child: ListView(children: const [
                 Column(
                   children: [],
                 )

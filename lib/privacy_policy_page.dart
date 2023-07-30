@@ -20,7 +20,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
-              child: ListView(children: [
+              child: ListView(children: const [
                 Column(
                   children: [],
                 )
