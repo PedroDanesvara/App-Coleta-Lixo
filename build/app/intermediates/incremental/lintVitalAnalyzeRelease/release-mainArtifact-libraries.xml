@@ -4,6 +4,19 @@
       jars="C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\app\intermediates\flutter\release\libs.jar"
       resolved="__local_aars__:C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
+      name="C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\android@@:flutter_native_splash::release"
+      jars="C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\flutter_native_splash\.transforms\4b3f467a26064e60830ba6397fd00cec\transformed\out\jars\classes.jar;C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\flutter_native_splash\.transforms\4b3f467a26064e60830ba6397fd00cec\transformed\out\jars\libs\R.jar"
+      resolved="net.jonhanson.flutter_native_splash:flutter_native_splash:unspecified"
+      folder="C:\Users\caioc\Documents\GitHub\App-Coleta-Lixo\build\flutter_native_splash\.transforms\4b3f467a26064e60830ba6397fd00cec\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="io.flutter:flutter_embedding_release:1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d@jar"
       jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\io.flutter\flutter_embedding_release\1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d\7b78fb4a8a09dd69a2d68d998b9a034ec2895610\flutter_embedding_release-1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d.jar"
       resolved="io.flutter:flutter_embedding_release:1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d"/>
@@ -61,18 +74,6 @@
       name="io.flutter:x86_64_release:1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d@jar"
       jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\io.flutter\x86_64_release\1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d\b3c83546f39a6946b19d1b3d9b538472e46870b2\x86_64_release-1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d.jar"
       resolved="io.flutter:x86_64_release:1.0.0-cdbeda788a293fa29665dc3fa3d6e63bd221cb0d"/>
-  <library
-      name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
-      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.7.10\d2abf9e77736acc4450dc4a3f707fa2c10f5099d\kotlin-stdlib-1.7.10.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.7.10"/>
-  <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
-      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.7.10\bac80c520d0a9e3f3673bc2658c6ed02ef45a76a\kotlin-stdlib-common-1.7.10.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10"/>
-  <library
-      name="org.jetbrains:annotations:13.0@jar"
-      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"
-      resolved="org.jetbrains:annotations:13.0"/>
   <library
       name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
       jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-java8\2.2.0\cd3478503da69b1a7e0319bd2d1389943db9b364\lifecycle-common-java8-2.2.0.jar"
@@ -288,4 +289,16 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.7.10\d2abf9e77736acc4450dc4a3f707fa2c10f5099d\kotlin-stdlib-1.7.10.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.7.10"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
+      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.7.10\bac80c520d0a9e3f3673bc2658c6ed02ef45a76a\kotlin-stdlib-common-1.7.10.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10"/>
+  <library
+      name="org.jetbrains:annotations:13.0@jar"
+      jars="C:\Users\caioc\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"
+      resolved="org.jetbrains:annotations:13.0"/>
 </libraries>

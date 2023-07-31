@@ -14,6 +14,12 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final _nameTextController = TextEditingController();
+  final _surnameTextController = TextEditingController();
+  final _emailOrPasswordTextController = TextEditingController();
+  final _passwordTextController = TextEditingController();
+  final _confirmPasswordTextController = TextEditingController();
+
   String name = '';
   String surname = '';
   String emailOrPassword = '';
@@ -76,14 +82,20 @@ class _SignUpPageState extends State<SignUpPage> {
                       children: [
                         //Campo de texto para o nome
                         TextField(
+                          controller: _nameTextController,
                           onChanged: (text) {
                             name = text;
                           },
                           keyboardType: TextInputType.name,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  _nameTextController.clear();
+                                },
+                                icon: const Icon(Icons.clear)),
                             labelText: 'Nome',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
+                            border: const OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                           ),
                         ),
@@ -91,14 +103,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           height: 10,
                         ),
                         TextField(
+                          controller: _surnameTextController,
                           onChanged: (text) {
                             name = text;
                           },
                           keyboardType: TextInputType.name,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  _surnameTextController.clear();
+                                },
+                                icon: const Icon(Icons.clear)),
                             labelText: 'Sobrenome',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
+                            border: const OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                           ),
                         ),
@@ -106,14 +124,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           height: 10,
                         ),
                         TextField(
+                          controller: _emailOrPasswordTextController,
                           onChanged: (text) {
                             emailOrPassword = text;
                           },
                           keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  _emailOrPasswordTextController.clear();
+                                },
+                                icon: const Icon(Icons.clear)),
                             labelText: 'Email ou telefone',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
+                            border: const OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                           ),
                         ),
@@ -121,14 +145,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           height: 10,
                         ),
                         TextField(
+                          controller: _passwordTextController,
                           onChanged: (text) {
                             password = text;
                           },
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  _passwordTextController.clear();
+                                },
+                                icon: const Icon(Icons.clear)),
                             labelText: 'Senha',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
+                            border: const OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                           ),
                         ),
@@ -136,14 +166,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           height: 10,
                         ),
                         TextField(
+                          controller: _confirmPasswordTextController,
                           onChanged: (text) {
                             confirmPassword = text;
                           },
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  _confirmPasswordTextController.clear();
+                                },
+                                icon: const Icon(Icons.clear)),
                             labelText: 'Confirmar senha',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
+                            border: const OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                           ),
                         ),

@@ -3,8 +3,8 @@
 # min_api: 16
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 52b105e
-# pg_map_hash: SHA-256 52b105e700abf38997b11d4e65d54a3d1b292b2b6a98fd7711b33e3b05409ca1
+# pg_map_id: 693c538
+# pg_map_hash: SHA-256 693c538d4d0350aa93fa54fd15e797853bd8ee5b556dd4d943dbf6451a3dc117
 android.app.ActivityManager$TaskDescription -> android.app.ActivityManager$TaskDescription:
 # {"id":"com.android.tools.r8.synthesized"}
     void <clinit>() -> <clinit>
@@ -1592,14 +1592,15 @@ io.flutter.embedding.engine.FlutterEngine -> io.flutter.embedding.engine.a:
     io.flutter.embedding.engine.systemchannels.NavigationChannel getNavigationChannel() -> m
     io.flutter.embedding.engine.systemchannels.PlatformChannel getPlatformChannel() -> n
     io.flutter.plugin.platform.PlatformViewsController getPlatformViewsController() -> o
-    io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer() -> p
-    io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel() -> q
-    io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel() -> r
-    io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel() -> s
-    io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel() -> t
-    io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel() -> u
-    boolean isAttachedToJni() -> v
-    io.flutter.embedding.engine.FlutterEngine spawn(android.content.Context,io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint,java.lang.String,java.util.List,io.flutter.plugin.platform.PlatformViewsController,boolean,boolean) -> w
+    io.flutter.embedding.engine.plugins.PluginRegistry getPlugins() -> p
+    io.flutter.embedding.engine.renderer.FlutterRenderer getRenderer() -> q
+    io.flutter.embedding.engine.systemchannels.RestorationChannel getRestorationChannel() -> r
+    io.flutter.embedding.engine.systemchannels.SettingsChannel getSettingsChannel() -> s
+    io.flutter.embedding.engine.systemchannels.SpellCheckChannel getSpellCheckChannel() -> t
+    io.flutter.embedding.engine.systemchannels.SystemChannel getSystemChannel() -> u
+    io.flutter.embedding.engine.systemchannels.TextInputChannel getTextInputChannel() -> v
+    boolean isAttachedToJni() -> w
+    io.flutter.embedding.engine.FlutterEngine spawn(android.content.Context,io.flutter.embedding.engine.dart.DartExecutor$DartEntrypoint,java.lang.String,java.util.List,io.flutter.plugin.platform.PlatformViewsController,boolean,boolean) -> x
 io.flutter.embedding.engine.FlutterEngine$1 -> io.flutter.embedding.engine.a$a:
     io.flutter.embedding.engine.FlutterEngine this$0 -> a
     void onPreEngineRestart() -> a
@@ -1637,20 +1638,22 @@ io.flutter.embedding.engine.FlutterEngineConnectionRegistry -> io.flutter.embedd
     void attachToActivity(io.flutter.embedding.android.ExclusiveAppComponent,androidx.lifecycle.Lifecycle) -> g
     void detachFromActivity() -> h
     void detachFromActivityForConfigChanges() -> i
-    void attachToActivityInternal(android.app.Activity,androidx.lifecycle.Lifecycle) -> j
-    void destroy() -> k
-    void detachFromActivityInternal() -> l
-    void detachFromAppComponent() -> m
-    void detachFromBroadcastReceiver() -> n
-    void detachFromContentProvider() -> o
-    void detachFromService() -> p
-    boolean isAttachedToActivity() -> q
-    boolean isAttachedToBroadcastReceiver() -> r
-    boolean isAttachedToContentProvider() -> s
-    boolean isAttachedToService() -> t
-    void remove(java.lang.Class) -> u
-    void remove(java.util.Set) -> v
-    void removeAll() -> w
+    void add(io.flutter.embedding.engine.plugins.FlutterPlugin) -> j
+    void attachToActivityInternal(android.app.Activity,androidx.lifecycle.Lifecycle) -> k
+    void destroy() -> l
+    void detachFromActivityInternal() -> m
+    void detachFromAppComponent() -> n
+    void detachFromBroadcastReceiver() -> o
+    void detachFromContentProvider() -> p
+    void detachFromService() -> q
+    boolean has(java.lang.Class) -> r
+    boolean isAttachedToActivity() -> s
+    boolean isAttachedToBroadcastReceiver() -> t
+    boolean isAttachedToContentProvider() -> u
+    boolean isAttachedToService() -> v
+    void remove(java.lang.Class) -> w
+    void remove(java.util.Set) -> x
+    void removeAll() -> y
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$1 -> io.flutter.embedding.engine.c$a:
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$DefaultFlutterAssets -> io.flutter.embedding.engine.c$b:
     io.flutter.embedding.engine.loader.FlutterLoader flutterLoader -> a
@@ -1924,6 +1927,7 @@ io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack$FlutterMutatorTyp
     io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack$FlutterMutatorType TRANSFORM -> g
 io.flutter.embedding.engine.plugins.FlutterPlugin -> p.a:
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> a
+    void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> c
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets -> p.a$a:
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding -> p.a$b:
     android.content.Context applicationContext -> a
@@ -1933,6 +1937,9 @@ io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding -> p.a$b:
     io.flutter.embedding.engine.FlutterEngine flutterEngine -> b
     io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets flutterAssets -> f
     io.flutter.plugin.common.BinaryMessenger binaryMessenger -> c
+    io.flutter.plugin.common.BinaryMessenger getBinaryMessenger() -> a
+io.flutter.embedding.engine.plugins.PluginRegistry -> p.b:
+    void add(io.flutter.embedding.engine.plugins.FlutterPlugin) -> j
 io.flutter.embedding.engine.plugins.activity.ActivityAware -> q.a:
     void onReattachedToActivityForConfigChanges(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> a
     void onDetachedFromActivity() -> b
@@ -1953,11 +1960,17 @@ io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanc
     void onRestoreInstanceState(android.os.Bundle) -> c
     void onSaveInstanceState(android.os.Bundle) -> e
 io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverAware -> r.a:
-    void onDetachedFromBroadcastReceiver() -> a
+    void onAttachedToBroadcastReceiver(io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverPluginBinding) -> a
+    void onDetachedFromBroadcastReceiver() -> b
+io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverPluginBinding -> r.b:
 io.flutter.embedding.engine.plugins.contentprovider.ContentProviderAware -> s.a:
     void onDetachedFromContentProvider() -> a
+    void onAttachedToContentProvider(io.flutter.embedding.engine.plugins.contentprovider.ContentProviderPluginBinding) -> b
+io.flutter.embedding.engine.plugins.contentprovider.ContentProviderPluginBinding -> s.b:
 io.flutter.embedding.engine.plugins.service.ServiceAware -> t.a:
-    void onDetachedFromService() -> a
+    void onAttachedToService(io.flutter.embedding.engine.plugins.service.ServicePluginBinding) -> a
+    void onDetachedFromService() -> b
+io.flutter.embedding.engine.plugins.service.ServicePluginBinding -> t.b:
 io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister -> u.a:
     void registerGeneratedPlugins(io.flutter.embedding.engine.FlutterEngine) -> a
 io.flutter.embedding.engine.renderer.FlutterRenderer -> v.a:
@@ -2096,7 +2109,7 @@ io.flutter.embedding.engine.systemchannels.DeferredComponentChannel -> w.b:
     void setDeferredComponentManager(io.flutter.embedding.engine.deferredcomponents.DeferredComponentManager) -> c
 io.flutter.embedding.engine.systemchannels.DeferredComponentChannel$1 -> w.b$a:
     io.flutter.embedding.engine.systemchannels.DeferredComponentChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.KeyEventChannel -> w.d:
     io.flutter.plugin.common.BasicMessageChannel channel -> a
     void $r8$lambda$RL0HJ5TnZGrDabOeA71yhjryCe4(io.flutter.embedding.engine.systemchannels.KeyEventChannel$EventResponseHandler,java.lang.Object) -> a
@@ -2133,7 +2146,7 @@ io.flutter.embedding.engine.systemchannels.LocalizationChannel -> w.f:
     void setLocalizationMessageHandler(io.flutter.embedding.engine.systemchannels.LocalizationChannel$LocalizationMessageHandler) -> c
 io.flutter.embedding.engine.systemchannels.LocalizationChannel$1 -> w.f$a:
     io.flutter.embedding.engine.systemchannels.LocalizationChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.LocalizationChannel$LocalizationMessageHandler -> w.f$b:
     java.lang.String getStringResource(java.lang.String,java.lang.String) -> a
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel -> w.g:
@@ -2144,7 +2157,7 @@ io.flutter.embedding.engine.systemchannels.MouseCursorChannel -> w.g:
     void setMethodHandler(io.flutter.embedding.engine.systemchannels.MouseCursorChannel$MouseCursorMethodHandler) -> b
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel$1 -> w.g$a:
     io.flutter.embedding.engine.systemchannels.MouseCursorChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel$MouseCursorMethodHandler -> w.g$b:
     void activateSystemCursor(java.lang.String) -> a
 io.flutter.embedding.engine.systemchannels.NavigationChannel -> w.h:
@@ -2155,7 +2168,7 @@ io.flutter.embedding.engine.systemchannels.NavigationChannel -> w.h:
     void setInitialRoute(java.lang.String) -> c
 io.flutter.embedding.engine.systemchannels.NavigationChannel$1 -> w.h$a:
     io.flutter.embedding.engine.systemchannels.NavigationChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.PlatformChannel -> w.i:
     io.flutter.plugin.common.MethodChannel$MethodCallHandler parsingMethodCallHandler -> c
     io.flutter.embedding.engine.systemchannels.PlatformChannel$PlatformMessageHandler platformMessageHandler -> b
@@ -2175,7 +2188,7 @@ io.flutter.embedding.engine.systemchannels.PlatformChannel -> w.i:
     void systemChromeChanged(boolean) -> m
 io.flutter.embedding.engine.systemchannels.PlatformChannel$1 -> w.i$a:
     io.flutter.embedding.engine.systemchannels.PlatformChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.PlatformChannel$2 -> w.i$b:
     int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiOverlay -> b
     int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiMode -> c
@@ -2264,9 +2277,9 @@ io.flutter.embedding.engine.systemchannels.PlatformViewsChannel -> w.k:
     void setPlatformViewsHandler(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler) -> e
 io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$1 -> w.k$a:
     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
-    void $r8$lambda$pMHhgo3vaqdzoS3K-OFSVbonOaM(io.flutter.plugin.common.MethodChannel$Result,io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferSize) -> b
+    void $r8$lambda$pMHhgo3vaqdzoS3K-OFSVbonOaM(io.flutter.plugin.common.MethodChannel$Result,io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewBufferSize) -> a
       # {"id":"com.android.tools.r8.synthesized"}
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
     void clearFocus(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> c
     void create(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> d
     void dispose(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> e
@@ -2361,7 +2374,7 @@ io.flutter.embedding.engine.systemchannels.RestorationChannel$1 -> w.l$a:
     void notImplemented() -> c
 io.flutter.embedding.engine.systemchannels.RestorationChannel$2 -> w.l$b:
     io.flutter.embedding.engine.systemchannels.RestorationChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.SettingsChannel -> w.m:
     io.flutter.plugin.common.BasicMessageChannel channel -> a
     io.flutter.embedding.engine.systemchannels.SettingsChannel$MessageBuilder startMessage() -> a
@@ -2387,7 +2400,7 @@ io.flutter.embedding.engine.systemchannels.SpellCheckChannel -> w.n:
     void setSpellCheckMethodHandler(io.flutter.embedding.engine.systemchannels.SpellCheckChannel$SpellCheckMethodHandler) -> b
 io.flutter.embedding.engine.systemchannels.SpellCheckChannel$1 -> w.n$a:
     io.flutter.embedding.engine.systemchannels.SpellCheckChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.SpellCheckChannel$SpellCheckMethodHandler -> w.n$b:
     void initiateSpellCheck(java.lang.String,java.lang.String,io.flutter.plugin.common.MethodChannel$Result) -> a
 io.flutter.embedding.engine.systemchannels.SystemChannel -> w.o:
@@ -2417,7 +2430,7 @@ io.flutter.embedding.engine.systemchannels.TextInputChannel -> w.p:
     void updateEditingStateWithTag(int,java.util.HashMap) -> r
 io.flutter.embedding.engine.systemchannels.TextInputChannel$1 -> w.p$a:
     io.flutter.embedding.engine.systemchannels.TextInputChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration -> w.p$b:
     java.lang.String actionLabel -> i
     io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration[] fields -> l
@@ -2574,7 +2587,7 @@ io.flutter.plugin.common.MethodChannel$IncomingResultHandler -> x.i$b:
     io.flutter.plugin.common.MethodChannel this$0 -> b
     void reply(java.nio.ByteBuffer) -> a
 io.flutter.plugin.common.MethodChannel$MethodCallHandler -> x.i$c:
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
 io.flutter.plugin.common.MethodChannel$Result -> x.i$d:
     void error(java.lang.String,java.lang.String,java.lang.Object) -> a
     void success(java.lang.Object) -> b
@@ -5850,3 +5863,8 @@ kotlinx.coroutines.scheduling.WorkQueue$$ExternalSyntheticBackportWithForwarding
 # {"id":"com.android.tools.r8.synthesized"}
     boolean kotlinx.coroutines.scheduling.WorkQueue$$InternalSyntheticBackportWithForwarding$1$fea41a45c8396694b734bf6713722fe4232fc4db1f67f3f538fe971a17baaead$0.m(java.util.concurrent.atomic.AtomicReferenceArray,int,java.lang.Object,java.lang.Object) -> a
       # {"id":"com.android.tools.r8.synthesized"}
+net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin -> x0.a:
+    io.flutter.plugin.common.MethodChannel channel -> a
+    void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
+    void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> c

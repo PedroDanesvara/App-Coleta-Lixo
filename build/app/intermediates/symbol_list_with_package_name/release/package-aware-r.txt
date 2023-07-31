@@ -31,6 +31,7 @@ attr splitRatio
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color ic_launcher_background
 color notification_action_color_filter
 color notification_icon_bg_color
 dimen compat_button_inset_horizontal_material
@@ -55,6 +56,7 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable ic_launcher_foreground
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -153,6 +155,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
+mipmap launcher_icon
 string status_bar_notification_info_overflow
 style LaunchTheme
 style NormalTheme
