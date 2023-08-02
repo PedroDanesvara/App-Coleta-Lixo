@@ -1071,6 +1071,7 @@ Marking id:action_text:2131034148 used because it matches string pool constant a
 Marking id:actions:2131034149 used because it matches string pool constant action
 Marking id:text:2131034184 used because it matches string pool constant text
 Marking id:text2:2131034185 used because it matches string pool constant text
+Marking drawable:background:2130968576 used because it matches string pool constant background
 Marking attr:activityAction:2130771968 used because it matches string pool constant activity
 Marking attr:activityName:2130771969 used because it matches string pool constant activity
 Marking id:line1:2131034160 used because it matches string pool constant line
@@ -1134,8 +1135,11 @@ Marking id:line3:2131034161 used because it matches string pool constant line
 @dimen/notification_subtext_size : reachable=false
 @dimen/notification_top_pad : reachable=false
 @dimen/notification_top_pad_large_text : reachable=false
+@drawable/background : reachable=true
 @drawable/ic_launcher_foreground : reachable=false
 @drawable/launch_background : reachable=false
+    @drawable/background
+    @drawable/splash
 @drawable/notification_action_background : reachable=false
     @color/androidx_core_ripple_material_light
     @dimen/compat_button_inset_horizontal_material
@@ -1160,6 +1164,7 @@ Marking id:line3:2131034161 used because it matches string pool constant line
 @drawable/notification_tile_bg : reachable=false
     @drawable/notify_panel_notification_icon_bg
 @drawable/notify_panel_notification_icon_bg : reachable=false
+@drawable/splash : reachable=false
 @id/accessibility_action_clickable_span : reachable=true
 @id/accessibility_custom_action_0 : reachable=true
 @id/accessibility_custom_action_1 : reachable=true
@@ -1296,6 +1301,7 @@ The root reachable resources are:
  attr:shortcutMatchRequired:2130771992
  color:androidx_core_ripple_material_light:2130837504
  color:androidx_core_secondary_text_default_material_light:2130837505
+ drawable:background:2130968576
  id:accessibility_action_clickable_span:2131034112
  id:accessibility_custom_action_0:2131034113
  id:accessibility_custom_action_1:2131034114
