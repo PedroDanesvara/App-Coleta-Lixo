@@ -8,11 +8,11 @@ from apps.oferta.models import Oferta
 @api_view(["GET"])
 def apiOverview(request):
     api_urls = {
-        "List": "/oferta-list/",
-        "Detail View": "/oferta-detail/<str:pk>/",
-        "Create": "/oferta-create/",
-        "Update": "/oferta-update/<str:pk>/",
-        "Delete": "/cliente-delete/<str:pk>/"
+        "List": "/ofertalist/",
+        "Detail View": "/ofertadetail/<str:pk>/",
+        "Create": "/ofertacreate/",
+        "Update": "/ofertaupdate/<str:pk>/",
+        "Delete": "/clientedelete/<str:pk>/"
     }
 
     return Response(api_urls)
