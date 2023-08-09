@@ -6,7 +6,10 @@ class AppController extends ChangeNotifier {
 
   bool isDarkTheme = false;
   bool isSignUpCheckboxConfirmed = false;
-  bool changeSomething = false;
+  bool catadorState = false;
+  bool coletorState = false;
+  bool sucatariaState = false;
+  bool occupationState = false;
 
   //Função para alterar estado do switch de Dark Mode
   changeTheme() {
@@ -20,8 +23,24 @@ class AppController extends ChangeNotifier {
     notifyListeners();
   }
 
-  changeBool() {
-    changeSomething = !changeSomething;
+  //Funções para alterar o estado dos Buttons da segunda página de cadastro
+  catadorSet() {
+    catadorState = !catadorState;
+    notifyListeners();
+  }
+
+  coletorSet() {
+    coletorState = !coletorState;
+    notifyListeners();
+  }
+
+  sucatariaSet() {
+    sucatariaState = !sucatariaState;
+    notifyListeners();
+  }
+
+  occupationSet() {
+    occupationState = !occupationState;
     notifyListeners();
   }
 }

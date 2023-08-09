@@ -1,4 +1,4 @@
-#Wed Aug 02 18:35:10 BRT 2023
+#Wed Aug 09 04:45:57 BRT 2023
 base.0=C\:\\Users\\caioc\\Documents\\GitHub\\App-Coleta-Lixo\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

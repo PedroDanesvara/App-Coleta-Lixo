@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_widgets.dart';
 import 'package:flutter/material.dart';
 import 'app_controller.dart';
@@ -28,12 +29,8 @@ class _SignUpPageState extends State<SignUpPage> {
   String confirmPassword = '';
 
   Future<bool> _onWillPop() async {
-    if (AppController.instance.isSignUpCheckboxConfirmed) {
-      AppController.instance.checkboxSet();
-      return true;
-    } else {
-      return true;
-    }
+    AppController.instance.isSignUpCheckboxConfirmed = false;
+    return true;
   }
 
   Widget _body() {
@@ -56,8 +53,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          child:
-                              Image.asset('assets/images/logo.png', height: 40),
+                          child: SvgPicture.asset('assets/images/logo.svg',
+                              height: 40),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -237,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     Row(
                       children: [
                         Flexible(
-                          child: AnimatedButton.strip(
+                          child: AnimatedButton(
                               isSelected: AppController
                                   .instance.isSignUpCheckboxConfirmed,
                               animationDuration:
@@ -245,8 +242,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               isReverse: false,
                               selectedBackgroundColor: const Color(0xFF439472),
                               backgroundColor: const Color(0xFF1F1F1F),
-                              stripTransitionType:
-                                  StripTransitionType.LEFT_TO_RIGHT,
+                              transitionType: TransitionType.LEFT_TO_RIGHT,
                               selectedTextColor: AppController
                                       .instance.isSignUpCheckboxConfirmed
                                   ? const Color.fromARGB(255, 255, 255, 255)
@@ -292,8 +288,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             onPressed: () {
                               if (AppController
-                                      .instance.isSignUpCheckboxConfirmed ==
-                                  true) {
+                                  .instance.isSignUpCheckboxConfirmed) {
                                 AppController.instance.checkboxSet();
                                 Navigator.pop(context);
                               } else {
