@@ -7,12 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'app_controller.dart';
 
-List<bool> _occupationState = <bool>[
-  AppController.instance.catadorState,
-  AppController.instance.coletorState,
-  AppController.instance.sucatariaState
-];
-
 class FinalSignUpPage extends StatefulWidget {
   const FinalSignUpPage({super.key});
 
@@ -251,7 +245,9 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                 animatedOn: AnimatedOn.onHover,
                                 onPress: () {
                                   AppController.instance.occupationState
-                                      ? Navigator.of(context).pushNamed('/home')
+                                      ? Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/home', (route) => false)
                                       : _showCheckboxNotCompletedAlert();
                                 },
                                 text: 'Concluir',

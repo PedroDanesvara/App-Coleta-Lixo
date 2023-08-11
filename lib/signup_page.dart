@@ -300,7 +300,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               style: TextStyle(
 
                                   //If-else pra trocar a cor do texto do botão de
-                                  //"Cadastrar" para deixar mais visível no Dark Mode.
+                                  //"Voltar" para deixar mais visível no Dark Mode.
                                   color: AppController.instance.isDarkTheme
                                       ? MyColors.primary[300]
                                       : MyColors.primary,

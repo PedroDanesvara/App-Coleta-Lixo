@@ -36,6 +36,8 @@ dependencies:
   flutter_svg: ^2.0.7
   flutter_native_splash: ^2.3.1
   flutter_launcher_icons: ^0.13.1
+  convex_bottom_bar: ^3.2.0
+  scroll_to_hide: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -83,15 +85,31 @@ flutter:
         - asset: assets/fonts/Roboto-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   assets:
+  #Assets SVGs
   - assets/images/logo.svg
   - assets/images/google_logo.svg
   - assets/images/instagram_logo.svg
   - assets/images/facebook_logo.svg
+  - assets/images/gps_icon.svg
+  - assets/images/home_icon.svg
+  - assets/images/notification_icon.svg
+  - assets/images/plus_add_icon.svg
+  - assets/images/profile_icon.svg
+
+  #Assets PNGs
   - assets/images/logo.png
   - assets/images/icon_logo.png
   - assets/images/google_logo.png
   - assets/images/instagram_logo.png
   - assets/images/facebook_logo.png
+  
+  #Avatares
+  - assets/images/carla_dias.png
+  - assets/images/pedro_avatar.jpg
+  - assets/images/caio_avatar.jpg
+  - assets/images/alex_avatar.jpg
+
+  #Animações JSON
   - assets/animated/under_construction.json
 
   #   - images/a_dot_burr.jpeg

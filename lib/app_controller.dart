@@ -5,11 +5,15 @@ class AppController extends ChangeNotifier {
   static AppController instance = AppController();
 
   bool isDarkTheme = false;
+
   bool isSignUpCheckboxConfirmed = false;
+
   bool catadorState = false;
   bool coletorState = false;
   bool sucatariaState = false;
   bool occupationState = false;
+
+  int bottomNotifications = 0;
 
   //Função para alterar estado do switch de Dark Mode
   changeTheme() {
@@ -43,4 +47,6 @@ class AppController extends ChangeNotifier {
     occupationState = !occupationState;
     notifyListeners();
   }
+
+  controlNotifications() {}
 }

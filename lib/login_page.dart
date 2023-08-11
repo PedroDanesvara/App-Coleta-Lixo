@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
             height: MediaQuery.of(context).size.height,
             child: Padding(
               //Padding da Página de login
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: SafeArea(
                 child: ScrollConfiguration(
                   behavior: ScrollRemove(),
@@ -101,7 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                                         _showSignInAlert();
                                       } else {
                                         Navigator.of(context)
-                                            .pushNamed('/home');
+                                            .pushNamedAndRemoveUntil(
+                                                '/home', (route) => false);
                                       }
                                     },
                                     child: const Text(

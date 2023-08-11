@@ -1,5 +1,6 @@
 import 'package:app_coleta_lixo/final_signup_page.dart';
 import 'package:app_coleta_lixo/privacy_policy_page.dart';
+import 'package:app_coleta_lixo/register_address.dart';
 import 'package:app_coleta_lixo/terms_of_use_page.dart';
 
 import 'app_controller.dart';
@@ -34,6 +35,7 @@ class AppWidget extends StatelessWidget {
               '/finalsignup': (context) => const FinalSignUpPage(),
               '/ppp': (context) => const PrivacyPolicyPage(),
               '/tou': (context) => const TermsOfUsePage(),
+              '/regaddress': (context) => const RegisterAddressPage(),
             });
       },
     );
