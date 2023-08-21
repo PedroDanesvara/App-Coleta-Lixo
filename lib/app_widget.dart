@@ -4,7 +4,7 @@ import 'package:app_coleta_lixo/terms_of_use_page.dart';
 
 import 'app_controller.dart';
 import 'colors.dart';
-import 'home_page.dart';
+import 'package:app_coleta_lixo/app/pages/home/home_page.dart';
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
