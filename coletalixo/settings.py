@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.coleta.apps.ColetaConfig',
+    'apps.oferta.apps.OfertaConfig',
     'apps.coletor.apps.ColetorConfig',
     'apps.produtor.apps.ProdutorConfig',
 ]

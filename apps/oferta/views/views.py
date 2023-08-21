@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.coleta.models import Oferta
+from apps.oferta.models import Oferta
 
 def listar(request):
     ofertas = Oferta.objects.all()
