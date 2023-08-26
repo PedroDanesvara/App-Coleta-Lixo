@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_controller.dart';
+import '../../providers/state_controller.dart';
 
 class PrivacyPolicyPage extends StatefulWidget {
   const PrivacyPolicyPage({super.key});

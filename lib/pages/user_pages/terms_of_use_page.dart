@@ -1,4 +1,4 @@
-import 'package:app_coleta_lixo/app_controller.dart';
+import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:flutter/material.dart';
 
 class TermsOfUsePage extends StatefulWidget {
@@ -19,11 +19,13 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
-              child: ListView(children: const [
-                Column(
-                  children: [],
-                )
-              ]),
+              child: ListView(
+                children: const [
+                  Column(
+                    children: [],
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -34,11 +36,14 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Testando tou')),
-        body: Stack(
-          children: [
-            _body(),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Testando tou'),
+      ),
+      body: Stack(
+        children: [
+          _body(),
+        ],
+      ),
+    );
   }
 }

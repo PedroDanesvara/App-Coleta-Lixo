@@ -30,6 +30,24 @@ class AppController extends ChangeNotifier {
   //Funções para alterar o estado dos Buttons da segunda página de cadastro
   catadorSet() {
     catadorState = !catadorState;
+<<<<<<< HEAD
+=======
+    notifyListeners();
+  }
+
+  coletorSet() {
+    coletorState = !coletorState;
+    notifyListeners();
+  }
+
+  sucatariaSet() {
+    sucatariaState = !sucatariaState;
+    notifyListeners();
+  }
+
+  occupationSet() {
+    occupationState = !occupationState;
+>>>>>>> main
     notifyListeners();
   }
 

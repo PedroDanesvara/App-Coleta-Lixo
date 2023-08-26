@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'custom_widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
-import 'app_controller.dart';
-import 'colors.dart';
+import '../../providers/state_controller.dart';
+import '../../models/colors.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -22,18 +23,15 @@ class _SignUpPageState extends State<SignUpPage> {
 
   String name = '';
   String surname = '';
-  String emailOrPassword = '';
+  String email = '';
+  String phone = '';
   String phoneNumber = '';
   String password = '';
   String confirmPassword = '';
 
   Future<bool> _onWillPop() async {
-    if (AppController.instance.isSignUpCheckboxConfirmed) {
-      AppController.instance.checkboxSet();
-      return true;
-    } else {
-      return true;
-    }
+    AppController.instance.isSignUpCheckboxConfirmed = false;
+    return true;
   }
 
   Widget _body() {
@@ -56,8 +54,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          child:
-                              Image.asset('assets/images/logo.png', height: 40),
+                          child: SvgPicture.asset(
+                              'assets/images/svg_icons/logo.svg',
+                              height: 40),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -105,7 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _surnameTextController,
                           onChanged: (text) {
-                            name = text;
+                            surname = text;
                           },
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -126,7 +125,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _emailOrPasswordTextController,
                           onChanged: (text) {
-                            emailOrPassword = text;
+                            email = text;
+                            phone = text;
                           },
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
@@ -237,7 +237,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     Row(
                       children: [
                         Flexible(
-                          child: AnimatedButton.strip(
+                          child: AnimatedButton(
                               isSelected: AppController
                                   .instance.isSignUpCheckboxConfirmed,
                               animationDuration:
@@ -245,8 +245,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               isReverse: false,
                               selectedBackgroundColor: const Color(0xFF439472),
                               backgroundColor: const Color(0xFF1F1F1F),
-                              stripTransitionType:
-                                  StripTransitionType.LEFT_TO_RIGHT,
+                              transitionType: TransitionType.LEFT_TO_RIGHT,
                               selectedTextColor: AppController
                                       .instance.isSignUpCheckboxConfirmed
                                   ? const Color.fromARGB(255, 255, 255, 255)
@@ -292,8 +291,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             onPressed: () {
                               if (AppController
-                                      .instance.isSignUpCheckboxConfirmed ==
-                                  true) {
+                                  .instance.isSignUpCheckboxConfirmed) {
                                 AppController.instance.checkboxSet();
                                 Navigator.pop(context);
                               } else {
@@ -305,7 +303,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               style: TextStyle(
 
                                   //If-else pra trocar a cor do texto do botão de
-                                  //"Cadastrar" para deixar mais visível no Dark Mode.
+                                  //"Voltar" para deixar mais visível no Dark Mode.
                                   color: AppController.instance.isDarkTheme
                                       ? MyColors.primary[300]
                                       : MyColors.primary,

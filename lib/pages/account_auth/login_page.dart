@@ -1,11 +1,11 @@
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'app_controller.dart';
-import 'package:app_coleta_lixo/colors.dart';
+import '../../providers/state_controller.dart';
+import 'package:app_coleta_lixo/models/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_widgets.dart';
+import '../../widgets/custom_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,9 +17,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
+  bool confirmation = false;
 
   Future<bool> _onWillPop() async {
-    return false;
+    return Future.value(false);
   }
 
   Widget _body() {
@@ -33,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
             height: MediaQuery.of(context).size.height,
             child: Padding(
               //Padding da Página de login
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: SafeArea(
                 child: ScrollConfiguration(
                   behavior: ScrollRemove(),
@@ -45,7 +46,8 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         width: 70,
                         height: 70,
-                        child: SvgPicture.asset('assets/images/logo.svg'),
+                        child: SvgPicture.asset(
+                            'assets/images/svg_icons/logo.svg'),
                       ),
                       Container(
                         height: 70,
@@ -101,7 +103,8 @@ class _LoginPageState extends State<LoginPage> {
                                         _showSignInAlert();
                                       } else {
                                         Navigator.of(context)
-                                            .pushNamed('/home');
+                                            .pushNamedAndRemoveUntil(
+                                                '/', (route) => false);
                                       }
                                     },
                                     child: const Text(
@@ -190,19 +193,19 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () {},
                             iconSize: 50,
                             icon: SvgPicture.asset(
-                                'assets/images/google_logo.svg'),
+                                'assets/images/svg_icons/google_logo.svg'),
                           ),
                           IconButton(
                             onPressed: () {},
                             iconSize: 50,
                             icon: SvgPicture.asset(
-                                'assets/images/instagram_logo.svg'),
+                                'assets/images/svg_icons/instagram_logo.svg'),
                           ),
                           IconButton(
                             onPressed: () {},
                             iconSize: 50,
                             icon: SvgPicture.asset(
-                                'assets/images/facebook_logo.svg'),
+                                'assets/images/svg_icons/facebook_logo.svg'),
                           ),
                         ],
                       )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'app_controller.dart';
-import 'colors.dart';
+import '../providers/state_controller.dart';
+import '../models/colors.dart';
 
 //Widget do switch do Dark Mode
 class DarkSwitch extends StatefulWidget {

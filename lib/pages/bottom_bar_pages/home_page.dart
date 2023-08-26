@@ -375,51 +375,6 @@ class HomePageState extends State<HomePage> {
         animation: AppController.instance,
         builder: (context, child) {
           return Scaffold(
-            bottomNavigationBar: ScrollToHide(
-              duration: const Duration(milliseconds: 200),
-              height: 50,
-              scrollController: _scrollController,
-              child: ConvexAppBar.badge(
-                {3: AppController.instance.isDarkTheme ? '99+' : ''},
-                badgeBorderRadius: 30,
-                badgeMargin: EdgeInsets.zero,
-                initialActiveIndex: 0,
-                style: TabStyle.flip,
-                curveSize: 0,
-                top: -2,
-                height: 50,
-                backgroundColor: AppController.instance.isDarkTheme
-                    ? MyColors.primary[900]
-                    : MyColors.primary,
-                items: const [
-                  TabItem(icon: Icons.home),
-                  TabItem(icon: Icons.gps_fixed),
-                  TabItem(icon: Icons.add),
-                  TabItem(icon: Icons.notifications),
-                  TabItem(icon: Icons.person),
-                ],
-                // onTap: (int i) => print('click index=$i')
-                onTap: (int i) {
-                  switch (i) {
-                    case 0:
-                      print('index: $i');
-                      break;
-                    case 1:
-                      print('index: $i');
-                      break;
-                    case 2:
-                      print('index: $i');
-                      break;
-                    case 3:
-                      print('index: $i');
-                      break;
-                    case 4:
-                      print('index: $i');
-                      break;
-                  }
-                },
-              ),
-            ),
             body: Stack(
               children: [
                 _body(),
