@@ -38,6 +38,14 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   convex_bottom_bar: ^3.2.0
   scroll_to_hide: ^2.0.0
+  image_picker: ^1.0.2
+  #gallery_saver: ^2.3.2
+  path_provider: ^2.1.0
+  shared_preferences: ^2.2.0
+  page_transition: ^2.0.9
+  multi_select_flutter: ^4.1.3
+  badges: ^3.1.1
+  auto_size_text_field: ^2.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -82,19 +90,37 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
         - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Roboto-Thin.ttf
+          weight: 100
+        
   # To add assets to your application, add an assets section, like this:
   assets:
   #Assets SVGs
-  - assets/images/logo.svg
-  - assets/images/google_logo.svg
-  - assets/images/instagram_logo.svg
-  - assets/images/facebook_logo.svg
-  - assets/images/gps_icon.svg
-  - assets/images/home_icon.svg
-  - assets/images/notification_icon.svg
-  - assets/images/plus_add_icon.svg
-  - assets/images/profile_icon.svg
+  - assets/images/svg_icons/logo.svg
+  - assets/images/svg_icons/google_logo.svg
+  - assets/images/svg_icons/instagram_logo.svg
+  - assets/images/svg_icons/facebook_logo.svg
+  - assets/images/svg_icons/notification_icon.svg
+  - assets/images/svg_icons/profile_icon.svg
+  - assets/images/svg_icons/medal_icon.svg
+  - assets/images/svg_icons/recycle_bin_icon.svg
+  - assets/images/svg_icons/star_icon.svg
+  - assets/images/svg_icons/lightbulb_icon.svg
+  - assets/images/svg_icons/trash_person_icon.svg
+  - assets/images/svg_icons/trash_bag_icon.svg
+  - assets/images/svg_icons/coin_icon.svg
+  - assets/images/svg_icons/product_interest_icon.svg
+  - assets/images/svg_icons/need_collector_icon.svg
 
   #Assets PNGs
   - assets/images/logo.png
