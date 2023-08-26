@@ -1,9 +1,10 @@
-2023/08/25-20:47:36.344 3f08 Reusing MANIFEST C:\Users\samue\AppData\Local\Temp\flutter_tools.3591a797\flutter_tools_chrome_device.bdd46cc\Default\Site Characteristics Database/MANIFEST-000001
-2023/08/25-20:47:36.344 3c70 Compacting 4@0 + 0@1 files
-2023/08/25-20:47:36.348 3c70 Generated table #11@0: 9 keys, 601 bytes
-2023/08/25-20:47:36.348 3c70 Compacted 4@0 + 0@1 files => 601 bytes
-2023/08/25-20:47:36.350 3c70 compacted to: files[ 0 1 0 0 0 0 0 ]
-2023/08/25-20:47:36.351 3c70 Delete type=2 #4
-2023/08/25-20:47:36.351 3c70 Delete type=2 #6
-2023/08/25-20:47:36.351 3c70 Delete type=2 #7
-2023/08/25-20:47:36.351 3c70 Delete type=2 #8
+2023/08/26-11:52:03.258 3c9c Reusing MANIFEST C:\Users\samue\AppData\Local\Temp\flutter_tools.f97addf4\flutter_tools_chrome_device.d0264e06\Default\Site Characteristics Database/MANIFEST-000001
+2023/08/26-11:52:03.259 39cc Compacting 5@0 + 0@1 files
+2023/08/26-11:52:03.262 39cc Generated table #30@0: 9 keys, 601 bytes
+2023/08/26-11:52:03.262 39cc Compacted 5@0 + 0@1 files => 601 bytes
+2023/08/26-11:52:03.265 39cc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/08/26-11:52:03.265 39cc Delete type=2 #4
+2023/08/26-11:52:03.265 39cc Delete type=2 #6
+2023/08/26-11:52:03.265 39cc Delete type=2 #11
+2023/08/26-11:52:03.265 39cc Delete type=2 #23
+2023/08/26-11:52:03.265 39cc Delete type=2 #24

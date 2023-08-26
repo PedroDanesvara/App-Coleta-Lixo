@@ -118,7 +118,7 @@ class HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SvgPicture.asset(
-                                  'assets/images/logo.svg',
+                                  'assets/images/svg_icons/logo.svg',
                                   fit: BoxFit.contain,
                                   height: 28,
                                 ),
@@ -143,7 +143,7 @@ class HomePageState extends State<HomePage> {
                           leading: const CircleAvatar(
                               radius: 25.0,
                               backgroundImage:
-                                  AssetImage('assets/images/facebook_logo.png')),
+                                  AssetImage('assets/images/pedro_avatar.jpg')),
                           title: const Text('Pedro Henrique',
                               style: TextStyle(
                                   fontSize: 15.0,
@@ -197,7 +197,7 @@ class HomePageState extends State<HomePage> {
                                           const CircleAvatar(
                                             radius: 25.0,
                                             backgroundImage: AssetImage(
-                                              'assets/images/google_logo.png',
+                                              'assets/images/alex_avatar.jpg',
                                             ),
                                           ),
                                           const SizedBox(width: 10.0),
