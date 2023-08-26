@@ -1,9 +1,10 @@
-import 'package:app_coleta_lixo/app/data_api/http/http_client.dart';
-import 'package:app_coleta_lixo/app/data_api/repositories/oferta_repository.dart';
-import 'package:app_coleta_lixo/app/pages/home/stores/oferta_stores.dart';
-import 'package:app_coleta_lixo/app_controller.dart';
-import 'package:app_coleta_lixo/colors.dart';
-import 'package:app_coleta_lixo/custom_widgets.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/repositories/oferta_repository.dart';
+import 'package:app_coleta_lixo/models/colors.dart';
+import 'package:app_coleta_lixo/providers/oferta_controller.dart';
+import 'package:app_coleta_lixo/providers/state_controller.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
+
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
@@ -205,14 +206,14 @@ class HomePageState extends State<HomePage> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                oferta.title,
+                                                oferta.tipo_material,
                                                 style: TextStyle(
                                                     fontSize: 15.0,
                                                     fontWeight: FontWeight.w600),
                                               ),
                                               Container(height: 2),
                                               Text(
-                                                oferta.brand,
+                                                oferta.estado,
                                                 style: TextStyle(
                                                     fontSize: 13.0,
                                                     color: AppController
@@ -252,7 +253,7 @@ class HomePageState extends State<HomePage> {
                                             width:
                                                 MediaQuery.of(context).size.width,
                                             child: Text(
-                                              '\u2022 ${oferta.price.toString()} reais',
+                                              '\u2022 ${oferta.valor.toString()} reais',
                                               style: TextStyle(
                                                   fontSize: 15.0,
                                                   fontWeight: FontWeight.w500,
@@ -267,7 +268,7 @@ class HomePageState extends State<HomePage> {
                                             width:
                                                 MediaQuery.of(context).size.width,
                                             child: Text(
-                                              '\u2022 ${oferta.rating.toString()} alguma coisa',
+                                              '\u2022 ${oferta.peso.toString()} Kg',
                                               style: TextStyle(
                                                   fontSize: 15.0,
                                                   fontWeight: FontWeight.w500,

@@ -10,7 +10,7 @@ class HttpClient implements IHttpClient {
 
   @override
   Future get({required String url}) async {
-    return await client.get(Uri.parse(url));
+    return await client.get(Uri.parse(url),);
   }
 
 }

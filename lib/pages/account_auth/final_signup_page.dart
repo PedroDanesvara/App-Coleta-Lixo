@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-
-import 'app_controller.dart';
-=======
 import 'package:app_coleta_lixo/models/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +6,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../providers/state_controller.dart';
->>>>>>> main
 
 class FinalSignUpPage extends StatefulWidget {
   const FinalSignUpPage({super.key});
@@ -21,27 +15,6 @@ class FinalSignUpPage extends StatefulWidget {
 }
 
 class _FinalSignUpPageState extends State<FinalSignUpPage> {
-<<<<<<< HEAD
-  Widget _body() {
-    return AnimatedBuilder(
-      animation: AppController.instance,
-      builder: (context, child) {
-        return SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ListView(children: const [
-                Column(
-                  children: [],
-                )
-              ]),
-            ),
-          ),
-        );
-      },
-=======
   bool occupationSelected = false;
 
   Future<bool> _onWillPop() async {
@@ -344,23 +317,12 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
           );
         },
       ),
->>>>>>> main
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-        appBar: AppBar(
-          title: const Text('Testando page'),
-        ),
-        body: Stack(
-          children: [
-            _body(),
-          ],
-        ));
-=======
         body: Stack(
       children: [
         _body(),
@@ -397,6 +359,5 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
             positiveTextStyle: const TextStyle(color: MyColors.primary),
           );
         });
->>>>>>> main
   }
 }

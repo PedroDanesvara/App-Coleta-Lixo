@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:app_coleta_lixo/app/data_api/http/exceptions.dart';
-import 'package:app_coleta_lixo/app/data_api/http/http_client.dart';
-import 'package:app_coleta_lixo/app/data_api/models/oferta_model.dart';
+import 'package:app_coleta_lixo/data_api/http/exceptions.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/models/oferta_model.dart';
 
 
 abstract class IOfertaRepository {
@@ -17,14 +17,14 @@ class OfertaRepository implements IOfertaRepository {
   @override
   Future<List<OfertaModel>> getOfertas() async {
     final response = await client.get(
-      url: 'https://dummyjson.com/products',
+      url: 'http://127.0.0.1:8000/ofertas/ofertas/',
     );
 
     if (response.statusCode == 200) {
       final List<OfertaModel> ofertas = [];
 
       final body = jsonDecode(response.body);
-      body['products'].map((item) {
+      body['results'].map((item) {
         final OfertaModel oferta = OfertaModel.fromMap(item);
         ofertas.add(oferta);
       }).toList();

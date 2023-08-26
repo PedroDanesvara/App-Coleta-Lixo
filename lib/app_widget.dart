@@ -11,16 +11,9 @@ import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/terms_of_use_page.dart';
 
-<<<<<<< HEAD
-import 'app_controller.dart';
-import 'colors.dart';
-import 'package:app_coleta_lixo/app/pages/home/home_page.dart';
-import 'signup_page.dart';
-=======
 import 'providers/state_controller.dart';
 import 'models/colors.dart';
 import 'pages/account_auth/signup_page.dart';
->>>>>>> main
 import 'package:flutter/material.dart';
 import 'pages/account_auth/login_page.dart';
 
