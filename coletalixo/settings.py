@@ -18,8 +18,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "PAGE_SIZE": 100, #Isso define a quantidade de elementos nas páginas retornadas pela API
+}
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
     'apps.oferta.apps.OfertaConfig',
     'apps.coletor.apps.ColetorConfig',
     'apps.produtor.apps.ProdutorConfig',
@@ -41,7 +56,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware', #middleware pra usar os cors, isso acontece pq o django dá erro se tenta receber/passar informação q esteja em outra porta. Pra q não dê erro, é preciso disso pra permitir comunicação entre portas diferentes
 ]
+
+#CORS_ALLOWED_ORIGINS = [ #Para permitir que o django envie informação pra alguem, é preciso informar aqui quem ele permite receber
+#    'http://localhost:*',
+#]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'coletalixo.urls'
 
