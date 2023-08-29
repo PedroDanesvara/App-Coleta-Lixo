@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:js_util';
+import 'dart:typed_data';
 
 import 'package:app_coleta_lixo/data_api/http/exceptions.dart';
 import 'package:app_coleta_lixo/data_api/http/http_client.dart';
@@ -21,14 +23,15 @@ class OfertaRepository implements IOfertaRepository {
     );
 
     if (response.statusCode == 200) {
+      print("Fiz requisição pra API");
       final List<OfertaModel> ofertas = [];
 
-      final body = jsonDecode(response.body);
+      Map<String, dynamic> body = jsonDecode(response.body);
       body['results'].map((item) {
         final OfertaModel oferta = OfertaModel.fromMap(item);
         ofertas.add(oferta);
       }).toList();
-
+      
       return ofertas;
     }
     else if(response.statusCode == 404) {

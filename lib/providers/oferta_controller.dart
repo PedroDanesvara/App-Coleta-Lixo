@@ -29,6 +29,7 @@ class OfertaStore {
       erro.value = e.massage;
     }
     catch (e) {
+      print(e);
       erro.value = e.toString();
     }
 
