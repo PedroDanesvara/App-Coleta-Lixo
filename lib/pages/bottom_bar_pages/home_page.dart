@@ -1,6 +1,5 @@
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
-import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -64,19 +63,20 @@ class HomePageState extends State<HomePage> {
                                 height: 28,
                               ),
                               Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                  ),
-                                  child: Text(
-                                    'App Coleta',
-                                    style: TextStyle(
-                                        color: notifier.darkTheme
-                                            ? MyColors.primary[300]
-                                            : MyColors.primary,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'Roboto'),
-                                  ))
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                                child: Text(
+                                  'App Coleta',
+                                  style: TextStyle(
+                                      color: notifier.darkTheme
+                                          ? MyColors.primary[300]
+                                          : MyColors.primary,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: 'Roboto'),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -107,9 +107,7 @@ class HomePageState extends State<HomePage> {
                             size: 40,
                             color: MyColors.grayScale[200],
                           ),
-                          onTap: () {
-                            Navigator.pushNamed(context, '/notifications');
-                          },
+                          onTap: () {},
                         ),
                         Container(
                           height: 30,
@@ -122,12 +120,13 @@ class HomePageState extends State<HomePage> {
                           child: Text(
                             'Em andamento',
                             style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: notifier.darkTheme
-                                    ? MyColors.primary[300]
-                                    : MyColors.primary[700]),
+                              fontFamily: 'Roboto',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: notifier.darkTheme
+                                  ? MyColors.primary[300]
+                                  : MyColors.primary[700],
+                            ),
                           ),
                         ),
                         ListView.builder(
@@ -694,31 +693,25 @@ class HomePageState extends State<HomePage> {
                             );
                           },
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const DarkSwitch(),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, '/login', (route) => false);
-                                AppController
-                                    .instance.isSignUpCheckboxConfirmed = false;
-                                AppController.instance.occupationState = false;
-                                AppController.instance.catadorState = false;
-                                AppController.instance.coletorState = false;
-                                AppController.instance.sucatariaState = false;
-                              },
-                              child: const Text(
-                                'Sair da página de Menu Principal',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Roboto',
-                                ),
-                              ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/login', (route) => false);
+                            AppController.instance.isSignUpCheckboxConfirmed =
+                                false;
+                            AppController.instance.occupationState = false;
+                            AppController.instance.catadorState = false;
+                            AppController.instance.coletorState = false;
+                            AppController.instance.sucatariaState = false;
+                          },
+                          child: const Text(
+                            'Sair da página de Menu Principal',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Roboto',
                             ),
-                          ],
+                          ),
                         ),
                         Container(
                           height: 50,

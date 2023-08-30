@@ -4,7 +4,7 @@ import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/personal_data.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/settings_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
@@ -435,10 +435,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   border: InputBorder.none,
                                   counterText: '',
                                   hintText: 'Informe sua biografia aqui.',
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 10),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   counterStyle: charactersLeft <= 20
-                                      ? TextStyle(color: Colors.red)
+                                      ? const TextStyle(
+                                          color: Colors.red,
+                                        )
                                       : TextStyle(
                                           color: Colors.grey[700],
                                         ),
@@ -559,7 +561,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                                 title: Text(
                                   textAlign: TextAlign.center,
-                                  'Dados Pessoais',
+                                  'Dados pessoais',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -647,7 +649,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     context,
                                     PageTransition(
                                       type: PageTransitionType.rightToLeft,
-                                      child: const SettingsPage(),
+                                      child: const UserSettingsPage(),
                                     ),
                                   );
                                 },
@@ -665,7 +667,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                                 title: Text(
                                   textAlign: TextAlign.center,
-                                  'Configurações',
+                                  'Configurações de usuário',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Roboto',

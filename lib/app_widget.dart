@@ -8,9 +8,10 @@ import 'package:app_coleta_lixo/pages/user_pages/personal_data.dart';
 import 'package:app_coleta_lixo/pages/user_pages/privacy_policy_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/settings_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/terms_of_use_page.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/state_controller.dart';
@@ -27,29 +28,38 @@ class AppWidget extends StatelessWidget {
       create: (_) => ThemeNotifier(),
       child: Consumer<ThemeNotifier>(
         builder: (context, ThemeNotifier notifier, child) {
-         return AnimatedBuilder(
+          return AnimatedBuilder(
             animation: AppController.instance,
             builder: (context, child) {
               return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  theme: notifier.darkTheme ? dark : light,
-                  initialRoute: '/login',
-                  routes: {
-                    '/': (context) => const AppNavigator(),
-                    '/login': (context) => const LoginPage(),
-                    '/signup': (context) => const SignUpPage(),
-                    '/finalsignup': (context) => const FinalSignUpPage(),
-                    '/ppp': (context) => const PrivacyPolicyPage(),
-                    '/tou': (context) => const TermsOfUsePage(),
-                    '/mappage': (context) => const RegisterAddressPage(),
-                    '/createoffer': (context) => const CreateOfferPage(),
-                    '/ratingpage': (context) => const RatingPage(),
-                    '/awardspage': (context) => const AwardsPage(),
-                    '/historypage': (context) => const HistoryPage(),
-                    '/datapage': (context) => const PersonalDataPage(),
-                    '/paymentpage': (context) => const PaymentPage(),
-                    '/settingspage': (context) => const SettingsPage(),
-                  });
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate
+                ],
+                supportedLocales: const [
+                  Locale('pt', 'BR'),
+                ],
+                debugShowCheckedModeBanner: false,
+                theme: notifier.darkTheme ? dark : light,
+                initialRoute: '/login',
+                routes: {
+                  '/': (context) => const AppNavigator(),
+                  '/login': (context) => const LoginPage(),
+                  '/signup': (context) => const SignUpPage(),
+                  '/finalsignup': (context) => const FinalSignUpPage(),
+                  '/ppp': (context) => const PrivacyPolicyPage(),
+                  '/tou': (context) => const TermsOfUsePage(),
+                  '/mappage': (context) => const RegisterAddressPage(),
+                  '/createoffer': (context) => const CreateOfferPage(),
+                  '/ratingpage': (context) => const RatingPage(),
+                  '/awardspage': (context) => const AwardsPage(),
+                  '/historypage': (context) => const HistoryPage(),
+                  '/datapage': (context) => const PersonalDataPage(),
+                  '/paymentpage': (context) => const PaymentPage(),
+                  '/settingspage': (context) => const UserSettingsPage(),
+                },
+              );
             },
           );
         },

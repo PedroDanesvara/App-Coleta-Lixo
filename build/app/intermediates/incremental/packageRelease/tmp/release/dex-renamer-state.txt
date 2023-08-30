@@ -1,4 +1,4 @@
-#Tue Aug 29 08:10:45 BRT 2023
+#Wed Aug 30 04:47:03 BRT 2023
 base.0=C\:\\Users\\caioc\\Documents\\GitHub\\App-Coleta-Lixo\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
