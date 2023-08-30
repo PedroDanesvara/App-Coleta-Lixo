@@ -1,6 +1,8 @@
+import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../providers/state_controller.dart';
-import '../models/colors.dart';
+import '../services/colors.dart';
 
 //Widget do switch do Dark Mode
 class DarkSwitch extends StatefulWidget {
@@ -13,13 +15,19 @@ class DarkSwitch extends StatefulWidget {
 class DarkSwitchState extends State<DarkSwitch> {
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      value: AppController.instance.isDarkTheme,
-      activeColor: MyColors.primary,
-      onChanged: (value) {
-        setState(() {
-          AppController.instance.changeTheme();
-        });
+    return Consumer<ThemeNotifier>(
+      builder: (context, notifier, child) {
+        return Switch(
+          value: notifier.darkTheme,
+          activeColor: MyColors.primary,
+          onChanged: (value) {
+            setState(
+              () {
+                notifier.toggleTheme();
+              },
+            );
+          },
+        );
       },
     );
   }
@@ -40,9 +48,11 @@ class _SignupCheckboxState extends State<SignupCheckbox> {
       child: Checkbox(
         value: AppController.instance.isSignUpCheckboxConfirmed,
         onChanged: (value) {
-          setState(() {
-            AppController.instance.checkboxSet();
-          });
+          setState(
+            () {
+              AppController.instance.checkboxSet();
+            },
+          );
         },
       ),
     );
