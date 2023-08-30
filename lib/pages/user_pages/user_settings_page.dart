@@ -141,7 +141,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                             decoration: InputDecoration(
                               counterText: '',
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.email,
                                 size: 24,
                                 color: MyColors.primary[400],
                               ),
@@ -187,7 +187,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                             decoration: InputDecoration(
                               counterText: '',
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.phone,
                                 size: 24,
                                 color: MyColors.primary[400],
                               ),
@@ -233,7 +233,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                             decoration: InputDecoration(
                               counterText: '',
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.badge,
                                 size: 24,
                                 color: MyColors.primary[400],
                               ),
@@ -279,7 +279,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                             decoration: InputDecoration(
                               counterText: '',
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.lock,
                                 size: 24,
                                 color: MyColors.primary[400],
                               ),
@@ -325,7 +325,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                             decoration: InputDecoration(
                               counterText: '',
                               prefixIcon: Icon(
-                                Icons.person,
+                                Icons.calendar_month,
                                 size: 24,
                                 color: MyColors.primary[400],
                               ),
