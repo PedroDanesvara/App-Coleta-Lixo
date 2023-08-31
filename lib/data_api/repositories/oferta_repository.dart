@@ -19,7 +19,7 @@ class OfertaRepository implements IOfertaRepository {
   @override
   Future<List<OfertaModel>> getOfertas() async {
     final response = await client.get(
-      url: 'http://127.0.0.1:8000/ofertas/ofertas/',
+      url: 'http://127.0.0.1:8000/ofertas/',
     );
 
     if (response.statusCode == 200) {
