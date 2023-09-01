@@ -2,9 +2,9 @@ import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/pages/user_pages/awards_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/personal_data.dart';
-import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/personal_data_page.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
@@ -631,7 +631,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     width: 2,
                                     color: notifier.darkTheme
                                         ? Colors.grey.shade600
-                                        : Color.fromARGB(234, 202, 197, 197),
+                                        : const Color.fromARGB(
+                                            234, 202, 197, 197),
                                   ),
                                 ),
                               ),

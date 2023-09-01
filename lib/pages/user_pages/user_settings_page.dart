@@ -3,59 +3,25 @@ import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
-import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class UserSettingsPage extends StatefulWidget {
   const UserSettingsPage({super.key});
+
   @override
   State<UserSettingsPage> createState() => _UserSettingsPageState();
 }
 
 class _UserSettingsPageState extends State<UserSettingsPage> {
-  final _nameTextController = TextEditingController();
-  final _emailTextController = TextEditingController();
-  final _phoneTextController = TextEditingController();
-  final _cpfTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
-  final _dateTextController = TextEditingController();
+  final String name = '';
+  final String email = '';
+  final String phone = '';
+  final String cpf = '';
+  final String password = '';
+  final String birthdayDate = '';
 
-  String name = '';
-  String email = '';
-  String phoneNumber = '';
-  String cpf = '';
-  String password = '';
-  String date = '';
-
-  var nameMaskFormatter = MaskTextInputFormatter(
-      mask:
-          'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      filter: {
-        "x": RegExp(
-            r'[a-zA-ZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØŒŠÞÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœšþúûüýÿ\s]'),
-      },
-      type: MaskAutoCompletionType.eager);
-  var phoneNumberMaskFormatter = MaskTextInputFormatter(
-      mask: '(xx) xxxxx-xxxx',
-      filter: {
-        "x": RegExp(r'[0-9]'),
-      },
-      type: MaskAutoCompletionType.lazy);
-  var cpfMaskFormatter = MaskTextInputFormatter(
-      mask: 'xxx.xxx.xxx-xx',
-      filter: {
-        "x": RegExp(r'[0-9]'),
-      },
-      type: MaskAutoCompletionType.lazy);
-  var dateMaskFormatter = MaskTextInputFormatter(
-      mask: 'xx/xx/xxxx',
-      filter: {
-        "x": RegExp(r'[0-9]'),
-      },
-      type: MaskAutoCompletionType.lazy);
   _body() {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) {
@@ -66,304 +32,14 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: ListView(
-                  physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
+                    children: [],
                   ),
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        left: 10,
-                        right: 10,
-                      ),
-                      child: Column(
-                        children: [
-                          AutoSizeTextField(
-                            textAlign: TextAlign.center,
-                            inputFormatters: [nameMaskFormatter],
-                            controller: _nameTextController,
-                            maxLength: 100,
-                            onChanged: (text) {
-                              name = text;
-                            },
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.person,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 126.0,
-                                ),
-                                child: Text(
-                                  'Nome',
-                                  overflow: TextOverflow.clip,
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          AutoSizeTextField(
-                            textAlign: TextAlign.center,
-                            controller: _emailTextController,
-                            onChanged: (text) {
-                              email = text;
-                            },
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.email,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 127.0,
-                                ),
-                                child: Text(
-                                  'Email',
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          TextField(
-                            textAlign: TextAlign.center,
-                            inputFormatters: [phoneNumberMaskFormatter],
-                            controller: _phoneTextController,
-                            onChanged: (text) {
-                              phoneNumber = text;
-                            },
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.phone,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 80.0,
-                                ),
-                                child: Text(
-                                  'Número de celular',
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          TextField(
-                            textAlign: TextAlign.center,
-                            inputFormatters: [cpfMaskFormatter],
-                            controller: _cpfTextController,
-                            onChanged: (text) {
-                              cpf = text;
-                            },
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.badge,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 130.0,
-                                ),
-                                child: Text(
-                                  'CPF',
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          TextField(
-                            textAlign: TextAlign.center,
-                            controller: _passwordTextController,
-                            onChanged: (text) {
-                              password = text;
-                            },
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 123.0,
-                                ),
-                                child: Text(
-                                  'Senha',
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          TextField(
-                            textAlign: TextAlign.center,
-                            inputFormatters: [dateMaskFormatter],
-                            controller: _dateTextController,
-                            onChanged: (text) {
-                              date = text;
-                            },
-                            keyboardType: TextInputType.url,
-                            decoration: InputDecoration(
-                              counterText: '',
-                              prefixIcon: Icon(
-                                Icons.calendar_month,
-                                size: 24,
-                                color: MyColors.primary[400],
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 24,
-                                color: notifier.darkTheme
-                                    ? Colors.grey[400]
-                                    : MyColors.darkGrayScale[300],
-                              ),
-                              floatingLabelAlignment:
-                                  FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 75.0,
-                                ),
-                                child: Text(
-                                  'Data de nascimento',
-                                ),
-                              ),
-                              labelStyle: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: const OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
                 ),
               ),
             );
@@ -379,7 +55,9 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
       builder: (context, notifier, child) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Configurações de usuário'),
+            title: const Text(
+              'Configurações de usuário',
+            ),
             centerTitle: true,
             titleTextStyle: TextStyle(
               fontSize: 18,
@@ -411,7 +89,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
             actions: const [
               DarkButton(),
             ],
-            elevation: 1,
+            elevation: 2,
           ),
           body: Stack(
             children: [

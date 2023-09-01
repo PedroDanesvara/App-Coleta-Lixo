@@ -4,11 +4,11 @@ import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controll
 import 'package:app_coleta_lixo/pages/user_pages/awards_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/personal_data.dart';
+import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/privacy_policy_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/personal_data_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/terms_of_use_page.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -55,9 +55,10 @@ class AppWidget extends StatelessWidget {
                   '/ratingpage': (context) => const RatingPage(),
                   '/awardspage': (context) => const AwardsPage(),
                   '/historypage': (context) => const HistoryPage(),
-                  '/datapage': (context) => const PersonalDataPage(),
+                  '/datapage': (context) => const UserSettingsPage(),
                   '/paymentpage': (context) => const PaymentPage(),
                   '/settingspage': (context) => const UserSettingsPage(),
+                  '/personaldata': (context) => const PersonalDataPage(),
                 },
               );
             },
