@@ -20,15 +20,43 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
 
-  Future<bool> _onWillPop() async {
-    return Future.value(false);
+  Future<bool> _onWillPop(BuildContext context) async {
+    bool? willPop = await showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return ClassicGeneralDialogWidget(
+          titleText: 'Sair do aplicativo',
+          contentText: 'Tem certeza que deseja sair?',
+          positiveText: 'Confirmar',
+          positiveTextStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w700,
+            color: MyColors.primary[400],
+          ),
+          onPositiveClick: () {
+            Navigator.of(context).pop(true);
+          },
+          negativeText: 'Fechar',
+          negativeTextStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w700,
+            color: MyColors.primary[400],
+          ),
+          onNegativeClick: () {
+            Navigator.of(context).pop(false);
+          },
+        );
+      },
+    );
+    return willPop ?? false;
   }
 
   Widget _body() {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) {
         return WillPopScope(
-          onWillPop: _onWillPop,
+          onWillPop: () => _onWillPop(context),
           child: AnimatedBuilder(
             animation: AppController.instance,
             builder: (context, child) {
@@ -44,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: ScrollConfiguration(
                       behavior: ScrollRemove(),
                       child: ListView(
+                        physics: const ClampingScrollPhysics(),
                         children: [
                           Container(
                             height: 30,
@@ -58,7 +87,6 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                             height: 70,
                           ),
-
                           Column(
                             children: [
                               //Campo de texto para o email
@@ -96,8 +124,6 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               Row(
                                 children: [
-                                  //Não faço ideia o porquê de esse Flexible estar nos botoes de usuario e cadastro e não lembro porque coloquei ele, só sei que sem ele o aplicativo NÃO RODA
-                                  //Creio eu que seja pra nao dar erro e ele expandir os botoes quando o aplicativo estiver em orientação em paisagem
                                   Flexible(
                                     //Botão pressionável de "Entrar"
                                     child: ElevatedButton(
@@ -114,7 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                                         } else {
                                           Navigator.of(context)
                                               .pushNamedAndRemoveUntil(
-                                                  '/', (route) => false);
+                                                  '/navigator',
+                                                  (route) => false);
                                         }
                                       },
                                       child: const Text(
@@ -132,16 +159,12 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               Row(
                                 children: [
-                                  //Mesma coisa do Flexible do botão de login
                                   Flexible(
-                                    //Botão pressionável de "Cadastrar"
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         elevation: 2,
                                         shadowColor: const Color.fromARGB(
                                             216, 255, 255, 255),
-                                        //If-else pra trocar a cor do botão "Cadastrar" para
-                                        //deixar adaptável ao Dark Mode.
                                         backgroundColor: notifier.darkTheme
                                             ? MyColors.grayScale
                                             : Colors.white,
@@ -154,8 +177,6 @@ class _LoginPageState extends State<LoginPage> {
                                       child: Text(
                                         'Cadastrar',
                                         style: TextStyle(
-                                          //If-else pra trocar a cor do texto do botão de
-                                          //"Cadastrar" para deixar mais visível no Dark Mode.
                                           color: notifier.darkTheme
                                               ? MyColors.primary[300]
                                               : MyColors.primary,
@@ -171,7 +192,6 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           Container(height: 30),
-                          //Linha divisória de widget criada para as logos das redes sociais
                           const Row(
                             children: [
                               Flexible(
@@ -193,9 +213,6 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                             height: 10,
                           ),
-
-                          //Lista em linha criada para criar os
-                          //botões pressionáveis de login com redes sociais.
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -251,7 +268,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-//Área de funções
   void _showSignInAlert() {
     showAnimatedDialog(
       context: context,

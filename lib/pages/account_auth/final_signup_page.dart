@@ -17,8 +17,6 @@ class FinalSignUpPage extends StatefulWidget {
 }
 
 class _FinalSignUpPageState extends State<FinalSignUpPage> {
-  bool occupationSelected = false;
-
   Future<bool> _onWillPop() async {
     AppController.instance.catadorState = false;
     AppController.instance.coletorState = false;
@@ -47,6 +45,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                       child: ScrollConfiguration(
                         behavior: ScrollRemove(),
                         child: ListView(
+                          physics: const ClampingScrollPhysics(),
                           children: [
                             Container(
                               height: 40,
@@ -284,7 +283,8 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                       AppController.instance.occupationState
                                           ? Navigator.of(context)
                                               .pushNamedAndRemoveUntil(
-                                                  '/', (route) => false)
+                                                  '/navigator',
+                                                  (route) => false)
                                           : _showCheckboxNotCompletedAlert();
                                     },
                                     text: 'Concluir',
@@ -370,11 +370,12 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        _body(),
-      ],
-    ));
+      body: Stack(
+        children: [
+          _body(),
+        ],
+      ),
+    );
   }
 
 //Área de funções

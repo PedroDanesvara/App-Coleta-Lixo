@@ -1,5 +1,6 @@
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -38,15 +39,14 @@ class HomePageState extends State<HomePage> {
           child: AnimatedBuilder(
             animation: AppController.instance,
             builder: (context, child) {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: SafeArea(
+              return SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: SafeArea(
+                  child: ScrollConfiguration(
+                    behavior: ScrollRemove(),
                     child: ListView(
-                      physics: const BouncingScrollPhysics(
-                        parent: FixedExtentScrollPhysics(),
-                      ),
+                      physics: const ClampingScrollPhysics(),
                       children: [
                         AppBar(
                           elevation: 0.5,
@@ -64,7 +64,7 @@ class HomePageState extends State<HomePage> {
                               ),
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0,
+                                  horizontal: 8,
                                 ),
                                 child: Text(
                                   'App Coleta',
@@ -85,19 +85,21 @@ class HomePageState extends State<HomePage> {
                         ),
                         ListTile(
                           leading: const CircleAvatar(
-                            radius: 25.0,
+                            radius: 25,
                             backgroundImage:
                                 AssetImage('assets/images/pedro_avatar.jpg'),
                           ),
-                          title: const Text('Pedro Henrique',
-                              style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Roboto')),
+                          title: const Text(
+                            'Pedro Henrique',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Roboto'),
+                          ),
                           subtitle: const Text(
                             'Fl 11, Q. 18, 14D',
                             style: TextStyle(
-                              fontSize: 13.0,
+                              fontSize: 13,
                               fontFamily: 'Roboto',
                             ),
                           ),
@@ -109,13 +111,12 @@ class HomePageState extends State<HomePage> {
                           ),
                           onTap: () {},
                         ),
-                        Container(
-                          height: 30,
+                        const SizedBox(
+                          height: 20,
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 0.0,
-                            horizontal: 16.0,
+                          padding: const EdgeInsets.only(
+                            left: 15,
                           ),
                           child: Text(
                             'Em andamento',
@@ -137,157 +138,135 @@ class HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0,
+                                horizontal: 10,
                               ),
                               child: Card(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 15,
-                                        horizontal: 10,
-                                      ),
-                                      child: Row(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
                                         children: [
                                           const CircleAvatar(
-                                            radius: 25.0,
+                                            radius: 25,
                                             backgroundImage: AssetImage(
                                               'assets/images/caio_avatar.jpg',
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Caio César',
-                                                style: TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 10,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text(
+                                                  'Caio César',
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                                 ),
-                                              ),
-                                              Container(
-                                                height: 2,
-                                              ),
-                                              Text(
-                                                'Fl 10, Q 13, 47',
-                                                style: TextStyle(
-                                                    fontSize: 13.0,
-                                                    color: notifier.darkTheme
-                                                        ? Colors.grey[400]
-                                                        : Colors.grey[700]),
-                                              ),
-                                              Container(
-                                                height: 10,
-                                              ),
-                                            ],
+                                                Container(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  'Fl 10, Q 13, 47',
+                                                  style: TextStyle(
+                                                      fontSize: 13.0,
+                                                      color: notifier.darkTheme
+                                                          ? Colors.grey[400]
+                                                          : Colors.grey[700]),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 20.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                               'Lista da Transação:',
                                               style: TextStyle(
-                                                  fontSize: 15.0,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w400,
                                                   fontFamily: 'Roboto'),
                                             ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30.0),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 3kg de latinha',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 30.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 3kg de vidro',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 15,
-                                        ),
-                                        const Row(
-                                          children: [
                                             Padding(
-                                              padding: EdgeInsets.only(
-                                                left: 20.0,
+                                              padding:
+                                                  EdgeInsets.only(left: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    '\u2022 3kg de latinha',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '\u2022 3kg de vidro',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              child: SizedBox(
-                                                width: 100,
-                                                child: Text(
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   'Marcado para:',
                                                   style: TextStyle(
-                                                    fontSize: 15.0,
+                                                    fontSize: 15,
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: 'Roboto',
                                                   ),
                                                 ),
-                                              ),
+                                                SizedBox(
+                                                  width: 1,
+                                                ),
+                                                Text(
+                                                  '19 de julho de 2023',
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Roboto',
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        const Padding(
-                                          padding: EdgeInsets.only(
-                                            right: 200,
-                                          ),
-                                          child: Text(
-                                            '- 19 de julho de 2023',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                            onPressed: () {
-                                              //Tela de Visualizar oferta
-                                            },
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {},
                                             child: const Text(
                                               'Ver',
                                               style: TextStyle(
@@ -295,23 +274,23 @@ class HomePageState extends State<HomePage> {
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: 'Roboto',
                                               ),
-                                            )),
-                                        TextButton(
-                                          onPressed: () {
-                                            //Cancelar proposta
-                                          },
-                                          child: const Text(
-                                            'Cancelar',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                          TextButton(
+                                            onPressed: () {},
+                                            child: const Text(
+                                              'Cancelar',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'Roboto',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
@@ -325,17 +304,18 @@ class HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0,
+                                horizontal: 10,
                               ),
                               child: Card(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 15,
-                                        horizontal: 10,
-                                      ),
-                                      child: Row(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
                                         children: [
                                           const CircleAvatar(
                                             radius: 25.0,
@@ -343,50 +323,49 @@ class HomePageState extends State<HomePage> {
                                               'assets/images/alex_avatar.jpg',
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Alex de Souza',
-                                                style: TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 10.0,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text(
+                                                  'Alex de Souza',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                                 ),
-                                              ),
-                                              Container(
-                                                height: 2,
-                                              ),
-                                              Text(
-                                                'Fl 28, Q num sei, Lote ali',
-                                                style: TextStyle(
-                                                    fontSize: 13.0,
-                                                    color: notifier.darkTheme
-                                                        ? Colors.grey[400]
-                                                        : Colors.grey[700]),
-                                              ),
-                                              Container(
-                                                height: 10,
-                                              ),
-                                            ],
+                                                Container(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  'Fl 28, Q num sei, Lote ali',
+                                                  style: TextStyle(
+                                                      fontSize: 13.0,
+                                                      color: notifier.darkTheme
+                                                          ? Colors.grey[400]
+                                                          : Colors.grey[700]),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 20.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                               'Lista da Transação:',
                                               style: TextStyle(
                                                 fontSize: 15.0,
@@ -394,56 +373,40 @@ class HomePageState extends State<HomePage> {
                                                 fontFamily: 'Roboto',
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 30.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 3kg de ferro',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 30.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 4kg de papelão',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 15,
-                                        ),
-                                        const Row(
-                                          children: [
                                             Padding(
-                                              padding: EdgeInsets.only(
-                                                left: 20.0,
+                                              padding:
+                                                  EdgeInsets.only(left: 10.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    '\u2022 3kg de ferro',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '\u2022 4kg de papelão',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              child: SizedBox(
-                                                width: 100,
-                                                child: Text(
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   'Marcado para:',
                                                   style: TextStyle(
                                                     fontSize: 15.0,
@@ -451,42 +414,37 @@ class HomePageState extends State<HomePage> {
                                                     fontFamily: 'Roboto',
                                                   ),
                                                 ),
-                                              ),
+                                                SizedBox(
+                                                  width: 1,
+                                                ),
+                                                Text(
+                                                  '19 de julho de 2023',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Roboto',
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        const Padding(
-                                          padding: EdgeInsets.only(
-                                            right: 200,
-                                          ),
-                                          child: Text(
-                                            '- 19 de julho de 2023',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                            onPressed: () {
-                                              //Tela de Visualizar oferta
-                                            },
-                                            child: const Text(
-                                              'Ver',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            )),
-                                        TextButton(
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                              onPressed: () {},
+                                              child: const Text(
+                                                'Ver',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              )),
+                                          TextButton(
                                             onPressed: () {
                                               //Cancelar proposta
                                             },
@@ -497,10 +455,12 @@ class HomePageState extends State<HomePage> {
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: 'Roboto',
                                               ),
-                                            )),
-                                      ],
-                                    )
-                                  ],
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
@@ -517,14 +477,15 @@ class HomePageState extends State<HomePage> {
                                 horizontal: 10.0,
                               ),
                               child: Card(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 15,
-                                        horizontal: 10,
-                                      ),
-                                      child: Row(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
                                         children: [
                                           const CircleAvatar(
                                             radius: 25.0,
@@ -532,47 +493,49 @@ class HomePageState extends State<HomePage> {
                                               'assets/images/carla_dias.png',
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Carla Dias',
-                                                style: TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 10,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text(
+                                                  'Carla Dias',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                                 ),
-                                              ),
-                                              Container(height: 2),
-                                              Text(
-                                                'Fl 10, Q. 18, 27',
-                                                style: TextStyle(
-                                                    fontSize: 13.0,
-                                                    color: notifier.darkTheme
-                                                        ? Colors.grey[400]
-                                                        : Colors.grey[700]),
-                                              ),
-                                              Container(
-                                                height: 10,
-                                              ),
-                                            ],
+                                                Container(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  'Fl 10, Q. 18, 27',
+                                                  style: TextStyle(
+                                                      fontSize: 13.0,
+                                                      color: notifier.darkTheme
+                                                          ? Colors.grey[400]
+                                                          : Colors.grey[700]),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                               'Lista da Transação:',
                                               style: TextStyle(
                                                 fontSize: 15.0,
@@ -580,55 +543,40 @@ class HomePageState extends State<HomePage> {
                                                 fontFamily: 'Roboto',
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30.0),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 6kg de alumínio',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 30.0,
-                                          ),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const Text(
-                                              '\u2022 2kg de vidro',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Roboto',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 15,
-                                        ),
-                                        const Row(
-                                          children: [
                                             Padding(
-                                              padding: EdgeInsets.only(
-                                                left: 20.0,
+                                              padding:
+                                                  EdgeInsets.only(left: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    '\u2022 6kg de alumínio',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '\u2022 2kg de vidro',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              child: SizedBox(
-                                                width: 100,
-                                                child: Text(
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   'Marcado para:',
                                                   style: TextStyle(
                                                     fontSize: 15.0,
@@ -636,85 +584,57 @@ class HomePageState extends State<HomePage> {
                                                     fontFamily: 'Roboto',
                                                   ),
                                                 ),
-                                              ),
+                                                Text(
+                                                  '19 de julho de 2023',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Roboto',
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        const Padding(
-                                          padding: EdgeInsets.only(
-                                            right: 200,
-                                          ),
-                                          child: Text(
-                                            '- 19 de julho de 2023',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              //Tela de Visualizar oferta
+                                            },
+                                            child: const Text(
+                                              'Ver',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'Roboto',
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            //Tela de Visualizar oferta
-                                          },
-                                          child: const Text(
-                                            'Ver',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
+                                          TextButton(
+                                            onPressed: () {
+                                              //Cancelar proposta
+                                            },
+                                            child: const Text(
+                                              'Cancelar',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'Roboto',
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            //Cancelar proposta
-                                          },
-                                          child: const Text(
-                                            'Cancelar',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Roboto',
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
                           },
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, '/login', (route) => false);
-                            AppController.instance.isSignUpCheckboxConfirmed =
-                                false;
-                            AppController.instance.occupationState = false;
-                            AppController.instance.catadorState = false;
-                            AppController.instance.coletorState = false;
-                            AppController.instance.sucatariaState = false;
-                          },
-                          child: const Text(
-                            'Sair da página de Menu Principal',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Roboto',
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 50,
                         ),
                       ],
                     ),

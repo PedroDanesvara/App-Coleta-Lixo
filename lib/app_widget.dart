@@ -44,8 +44,8 @@ class AppWidget extends StatelessWidget {
                 theme: notifier.darkTheme ? dark : light,
                 initialRoute: '/login',
                 routes: {
-                  '/': (context) => const AppNavigator(),
                   '/login': (context) => const LoginPage(),
+                  '/navigator': (context) => const AppNavigator(),
                   '/signup': (context) => const SignUpPage(),
                   '/finalsignup': (context) => const FinalSignUpPage(),
                   '/ppp': (context) => const PrivacyPolicyPage(),

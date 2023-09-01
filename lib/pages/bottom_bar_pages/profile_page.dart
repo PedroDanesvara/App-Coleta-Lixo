@@ -6,6 +6,7 @@ import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/personal_data_page.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
@@ -39,15 +40,14 @@ class _ProfilePageState extends State<ProfilePage> {
           child: AnimatedBuilder(
             animation: AppController.instance,
             builder: (context, child) {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: SafeArea(
+              return SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: SafeArea(
+                  child: ScrollConfiguration(
+                    behavior: ScrollRemove(),
                     child: ListView(
-                      physics: const BouncingScrollPhysics(
-                        parent: AlwaysScrollableScrollPhysics(),
-                      ),
+                      physics: const ClampingScrollPhysics(),
                       children: [
                         AppBar(
                           elevation: 0,
@@ -124,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Container(
                           height: 10,
                         ),
-                        Center(
+                        const Center(
                           child: Text(
                             'Pedro Henrique',
                             style: TextStyle(
@@ -206,7 +206,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     border: Border.all(color: MyColors.primary),
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
@@ -422,10 +422,35 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                   );
                                 },
+                                onSubmitted: (value) async {
+                                  await Future.delayed(
+                                    const Duration(milliseconds: 500),
+                                  );
+                                  // ignore: use_build_context_synchronously
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Você atualizou sua biografia!',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.w400,
+                                          color: notifier.darkTheme
+                                              ? Colors.grey[50]
+                                              : Colors.white,
+                                        ),
+                                      ),
+                                      dismissDirection: DismissDirection.down,
+                                      backgroundColor: notifier.darkTheme
+                                          ? MyColors.darkGrayScale[700]
+                                          : MyColors.primary[800],
+                                    ),
+                                  );
+                                },
                                 maxLines: null,
                                 expands: true,
                                 maxLength: 400,
-                                keyboardType: TextInputType.multiline,
+                                keyboardType: TextInputType.name,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Roboto',
@@ -469,7 +494,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           : Colors.black,
                                 ),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.edit,
                               ),
                             ],
@@ -525,7 +550,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     width: 2,
                                     color: notifier.darkTheme
                                         ? Colors.grey.shade600
-                                        : Color.fromARGB(234, 202, 197, 197),
+                                        : const Color.fromARGB(
+                                            234, 202, 197, 197),
                                   ),
                                 ),
                               ),
@@ -578,7 +604,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     width: 2,
                                     color: notifier.darkTheme
                                         ? Colors.grey.shade600
-                                        : Color.fromARGB(234, 202, 197, 197),
+                                        : const Color.fromARGB(
+                                            234, 202, 197, 197),
                                   ),
                                 ),
                               ),

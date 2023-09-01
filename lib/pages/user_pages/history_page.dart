@@ -1,6 +1,7 @@
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -20,18 +21,17 @@ class _HistoryPageState extends State<HistoryPage> {
         return AnimatedBuilder(
           animation: AppController.instance,
           builder: (context, child) {
-            return SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.all(
-                    30.0,
-                  ),
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(
+                  30.0,
+                ),
+                child: ScrollConfiguration(
+                  behavior: ScrollRemove(),
                   child: ListView(
-                    physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics(),
-                    ),
+                    physics: const ClampingScrollPhysics(),
                     children: [],
                   ),
                 ),

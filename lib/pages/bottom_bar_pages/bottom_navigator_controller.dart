@@ -137,7 +137,6 @@ class _AppNavigatorState extends State<AppNavigator> {
                           setState(
                             () {
                               selectedPage = value;
-                              if (value == 2) {}
                             },
                           );
                         },

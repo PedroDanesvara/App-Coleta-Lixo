@@ -125,6 +125,7 @@ flutter:
   - assets/images/svg_icons/coin_icon.svg
   - assets/images/svg_icons/product_interest_icon.svg
   - assets/images/svg_icons/need_collector_icon.svg
+  - assets/images/svg_icons/user_settings_page_icons/cry_emoji.svg
 
   #Assets PNGs
   - assets/images/logo.png

@@ -1,8 +1,8 @@
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app_coleta_lixo/widgets/notification_alert_dialog.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +17,6 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  final ScrollController _scrollController = ScrollController();
-
   List allItems = [
     'destaque',
     'dica',
@@ -30,12 +28,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
     'catador',
   ];
   List selectedItems = [];
-
-  @override
-  void dispose() {
-    super.dispose();
-    _scrollController.dispose();
-  }
 
   Future<bool> _onWillPop() async {
     return false;
@@ -49,15 +41,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
           child: AnimatedBuilder(
             animation: AppController.instance,
             builder: (context, child) {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+              return SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: ScrollConfiguration(
+                  behavior: ScrollRemove(),
                   child: ListView(
-                    controller: _scrollController,
-                    physics: const BouncingScrollPhysics(
-                      parent: FixedExtentScrollPhysics(),
-                    ),
+                    physics: const ClampingScrollPhysics(),
                     children: [
                       AppBar(
                         elevation: 0.5,
@@ -488,7 +478,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         ),
                       ),
                       const SizedBox(
-                        height: 50,
+                        height: 10,
                       ),
                     ],
                   ),

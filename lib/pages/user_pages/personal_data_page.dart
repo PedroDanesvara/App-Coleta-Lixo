@@ -1,6 +1,7 @@
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
@@ -55,20 +56,19 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
         "x": RegExp(r'[0-9]'),
       },
       type: MaskAutoCompletionType.lazy);
-  _body() {
+  Widget _body() {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) {
         return AnimatedBuilder(
           animation: AppController.instance,
           builder: (context, child) {
-            return SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: ScrollConfiguration(
+                behavior: ScrollRemove(),
                 child: ListView(
-                  physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics(),
-                  ),
+                  physics: const ClampingScrollPhysics(),
                   children: [
                     const SizedBox(
                       height: 10,
@@ -107,14 +107,9 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 126.0,
-                                ),
-                                child: Text(
-                                  'Nome',
-                                  overflow: TextOverflow.clip,
-                                ),
+                              label: const Text(
+                                'Nome',
+                                overflow: TextOverflow.clip,
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -153,13 +148,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 127.0,
-                                ),
-                                child: Text(
-                                  'Email',
-                                ),
+                              label: const Text(
+                                'Email',
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -199,13 +189,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 80.0,
-                                ),
-                                child: Text(
-                                  'Número de celular',
-                                ),
+                              label: const Text(
+                                'Número de celular',
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -245,13 +230,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 130.0,
-                                ),
-                                child: Text(
-                                  'CPF',
-                                ),
+                              label: const Text(
+                                'CPF',
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -291,13 +271,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 123.0,
-                                ),
-                                child: Text(
-                                  'Senha',
-                                ),
+                              label: const Text(
+                                'Senha',
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -337,13 +312,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 75.0,
-                                ),
-                                child: Text(
-                                  'Data de nascimento',
-                                ),
+                              label: const Text(
+                                'Data de nascimento',
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
