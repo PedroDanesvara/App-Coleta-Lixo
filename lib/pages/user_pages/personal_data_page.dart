@@ -82,6 +82,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                       child: Column(
                         children: [
                           AutoSizeTextField(
+                            
                             textAlign: TextAlign.center,
                             inputFormatters: [nameMaskFormatter],
                             controller: _nameTextController,
@@ -107,9 +108,13 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'Nome',
-                                overflow: TextOverflow.clip,
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'Nome',
+                                  overflow: TextOverflow.clip,
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -148,8 +153,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'Email',
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'Email',
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -189,8 +198,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'Número de celular',
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'Número de celular',
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -230,8 +243,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'CPF',
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'CPF',
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -271,8 +288,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'Senha',
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'Senha',
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
@@ -312,8 +333,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                               ),
                               floatingLabelAlignment:
                                   FloatingLabelAlignment.center,
-                              label: const Text(
-                                'Data de nascimento',
+                              label: Center(
+                                widthFactor:
+                                    MediaQuery.of(context).size.width / 2,
+                                child: const Text(
+                                  'Data de nascimento',
+                                ),
                               ),
                               labelStyle: const TextStyle(
                                 fontSize: 16,
