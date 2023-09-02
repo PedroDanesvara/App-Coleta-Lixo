@@ -22,6 +22,10 @@ class OfertaRepository implements IOfertaRepository {
       url: 'http://127.0.0.1:8000/ofertas/',
     );
 
+    headers = {
+      "Authorization": "Token ${sessionStorage.token}"
+    }
+
     if (response.statusCode == 200) {
       print("Fiz requisição pra API");
       final List<OfertaModel> ofertas = [];

@@ -4,11 +4,7 @@ import 'package:app_coleta_lixo/models/colors.dart';
 import 'package:app_coleta_lixo/providers/oferta_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
-
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:scroll_to_hide/scroll_to_hide.dart';
-
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +19,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
 
-  final OfertaStore store = OfertaStore(
+  final OfertaController ofertaController = OfertaController(
     repository: OfertaRepository(
       client: HttpClient(),
       )
@@ -32,7 +28,7 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    store.getOfertas();
+    ofertaController.getOfertas();
   }
 
   @override
@@ -54,22 +50,22 @@ class HomePageState extends State<HomePage> {
       child: AnimatedBuilder(
           animation: Listenable.merge([
             AppController.instance,
-            store.isLoading,
-            store.erro,
-            store.state,
+            ofertaController.isLoading,
+            ofertaController.erro,
+            ofertaController.state,
           ]),
           builder: (context, child) {
 
             //Tela carregando as ofertas da API
-            if(store.isLoading.value){
+            if(ofertaController.isLoading.value){
               return const Center(child: CircularProgressIndicator());
             }
 
             //Se não tiver vazio, significa que tem erro
-            if (store.erro.value.isNotEmpty) {
+            if (ofertaController.erro.value.isNotEmpty) {
               return Center(
                 child: Text(
-                  store.erro.value,
+                  ofertaController.erro.value,
                   style: const TextStyle(
                     color: Colors.black54,
                     fontWeight: FontWeight.w600,
@@ -81,7 +77,7 @@ class HomePageState extends State<HomePage> {
             }
 
             //Não há ofertas pra listar
-            if (store.state.value.isEmpty) {
+            if (ofertaController.state.value.isEmpty) {
               return const Center(
                 child: Text(
                   'Nenhuma oferta na lista',
@@ -178,10 +174,10 @@ class HomePageState extends State<HomePage> {
                           physics: const NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemCount: store.state.value.length,
+                          itemCount: ofertaController.state.value.length,
                           itemBuilder: (context, index) {
 
-                            final oferta = store.state.value[index];
+                            final oferta = ofertaController.state.value[index];
 
                             return Padding(
                               padding:

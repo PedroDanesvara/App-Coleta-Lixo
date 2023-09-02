@@ -1,3 +1,6 @@
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/repositories/auth_token_repository.dart';
+import 'package:app_coleta_lixo/providers/login_controller.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,6 +22,12 @@ class _LoginPageState extends State<LoginPage> {
   String password = '';
   bool confirmation = false;
 
+  final LoginController loginController = LoginController(
+    repository: AuthTokenRepository(
+      client: HttpClient(),
+    )
+  );
+  
   Future<bool> _onWillPop() async {
     return Future.value(false);
   }
@@ -99,6 +108,10 @@ class _LoginPageState extends State<LoginPage> {
                                         shadowColor: Colors.transparent),
                                     //Navegação entre telas
                                     onPressed: () {
+
+                                      loginController.getToken(username: "admin", password: "admin");
+                                      print(loginController.token);
+
                                       if (password != '123' || email != '123') {
                                         _showSignInAlert();
                                       } else {

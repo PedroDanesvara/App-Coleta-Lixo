@@ -3,7 +3,7 @@ import 'package:app_coleta_lixo/data_api/models/oferta_model.dart';
 import 'package:app_coleta_lixo/data_api/repositories/oferta_repository.dart';
 import 'package:flutter/material.dart';
 
-class OfertaStore {
+class OfertaController {
   final IOfertaRepository repository;
   
   //Variável reativa para o estado de loading
@@ -17,7 +17,7 @@ class OfertaStore {
   //Variável reativa para os erros que acontecerem na tela
   final ValueNotifier<String> erro = ValueNotifier<String>('');
 
-  OfertaStore({required this.repository});
+  OfertaController({required this.repository});
 
   Future getOfertas() async {
     isLoading.value = true;
