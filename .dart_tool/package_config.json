@@ -176,6 +176,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///C:/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_native_splash",
       "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.3.1",
       "packageUri": "lib/",
@@ -278,6 +284,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -300,6 +312,12 @@
       "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/lottie-2.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "mask_text_input_formatter",
+      "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/mask_text_input_formatter-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "matcher",
@@ -326,8 +344,8 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "multi_select_flutter",
-      "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/multi_select_flutter-4.1.3",
+      "name": "nested",
+      "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -408,6 +426,12 @@
       "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/pointycastle-3.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "scroll_to_hide",
@@ -572,7 +596,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-25T20:13:13.714718Z",
+  "generated": "2023-09-01T14:31:34.972354Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }
