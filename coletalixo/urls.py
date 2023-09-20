@@ -8,4 +8,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('ofertas/', include('apps.oferta.urls')),
     path('obtain-token/', obtain_auth_token),
+    path("", include("apps.usuario.urls")),
 ]

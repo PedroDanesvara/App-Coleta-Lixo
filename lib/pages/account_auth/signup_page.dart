@@ -1,3 +1,8 @@
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/models/usuario_model.dart';
+import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
+import 'package:app_coleta_lixo/pages/account_auth/final_signup_page.dart';
+import 'package:app_coleta_lixo/providers/usuario_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -9,6 +14,13 @@ import '../../models/colors.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+  static String name = '',
+      surname = '',
+      email = '',
+      phone = '',
+      phoneNumber = '',
+      password = '',
+      confirmPassword = '';
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -20,14 +32,6 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailOrPasswordTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
   final _confirmPasswordTextController = TextEditingController();
-
-  String name = '';
-  String surname = '';
-  String email = '';
-  String phone = '';
-  String phoneNumber = '';
-  String password = '';
-  String confirmPassword = '';
 
   Future<bool> _onWillPop() async {
     AppController.instance.isSignUpCheckboxConfirmed = false;
@@ -83,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _nameTextController,
                           onChanged: (text) {
-                            name = text;
+                            SignUpPage.name = text;
                           },
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -104,7 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _surnameTextController,
                           onChanged: (text) {
-                            surname = text;
+                            SignUpPage.surname = text;
                           },
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -125,8 +129,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _emailOrPasswordTextController,
                           onChanged: (text) {
-                            email = text;
-                            phone = text;
+                            SignUpPage.email = text;
+                            SignUpPage.phone = text;
                           },
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
@@ -147,7 +151,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _passwordTextController,
                           onChanged: (text) {
-                            password = text;
+                            SignUpPage.password = text;
                           },
                           obscureText: true,
                           decoration: InputDecoration(
@@ -168,7 +172,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextField(
                           controller: _confirmPasswordTextController,
                           onChanged: (text) {
-                            confirmPassword = text;
+                            SignUpPage.confirmPassword = text;
                           },
                           obscureText: true,
                           decoration: InputDecoration(

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:js_util';
-import 'dart:typed_data';
 
 import 'package:app_coleta_lixo/data_api/http/exceptions.dart';
 import 'package:app_coleta_lixo/data_api/http/http_client.dart';
@@ -21,10 +19,6 @@ class OfertaRepository implements IOfertaRepository {
     final response = await client.get(
       url: 'http://127.0.0.1:8000/ofertas/',
     );
-
-    headers = {
-      "Authorization": "Token ${sessionStorage.token}"
-    }
 
     if (response.statusCode == 200) {
       print("Fiz requisição pra API");

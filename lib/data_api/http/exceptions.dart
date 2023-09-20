@@ -1,5 +1,5 @@
 class NotFoundException implements Exception {
-  final String massage;
+  final String message;
 
-  NotFoundException(this.massage);
+  NotFoundException(this.message);
 }

@@ -26,7 +26,7 @@ class OfertaController {
       final result = await repository.getOfertas();
       state.value = result;
     } on NotFoundException catch (e) {
-      erro.value = e.massage;
+      erro.value = e.message;
     }
     catch (e) {
       print(e);

@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                                     //Navegação entre telas
                                     onPressed: () {
 
-                                      loginController.getToken(username: "admin", password: "admin");
+                                      loginController.getToken(username: email, password: password);
                                       print(loginController.token);
 
                                       if (password != '123' || email != '123') {

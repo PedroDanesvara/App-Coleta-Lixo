@@ -18,7 +18,7 @@ class LoginController {
       print("Resultado ${result}");
       token.value = result;
     } on NotFoundException catch (e) {
-      erro.value = e.massage;
+      erro.value = e.message;
     }
     catch (e) {
       print(e);
