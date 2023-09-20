@@ -275,7 +275,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                       email: SignUpPage.email,
                                       password: SignUpPage.password,
                                       telefone: '992664938',
-                                      user_types: user_types);
+                                      user_types: ["produtor"]);
                                   AppController.instance.occupationState
                                       ? Navigator.of(context)
                                           .pushNamedAndRemoveUntil(

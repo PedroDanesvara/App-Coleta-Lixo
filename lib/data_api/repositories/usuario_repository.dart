@@ -40,6 +40,8 @@ class UsuarioRepository implements IUsuarioRepository {
       "user_types": user_types,
     };
 
+    print(data);
+
     final response = await client.post(
         url: 'http://127.0.0.1:8000/api/user/add/', data: data);
 
