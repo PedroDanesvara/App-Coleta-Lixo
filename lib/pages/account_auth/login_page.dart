@@ -17,8 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email = '';
-  String password = '';
+  String email = '', password = '';
 
   Future<bool> _onWillPop(BuildContext context) async {
     bool? willPop = await showDialog(

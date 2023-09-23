@@ -4,6 +4,7 @@ import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
+import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:page_transition/page_transition.dart';
@@ -16,19 +17,19 @@ class PersonalDataPage extends StatefulWidget {
 }
 
 class _PersonalDataPageState extends State<PersonalDataPage> {
-  final _nameTextController = TextEditingController();
-  final _emailTextController = TextEditingController();
-  final _phoneTextController = TextEditingController();
-  final _cpfTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
-  final _dateTextController = TextEditingController();
+  final _nameTextController = TextEditingController(),
+      _emailTextController = TextEditingController(),
+      _phoneTextController = TextEditingController(),
+      _cpfTextController = TextEditingController(),
+      _passwordTextController = TextEditingController(),
+      _dateTextController = TextEditingController();
 
-  String name = '';
-  String email = '';
-  String phoneNumber = '';
-  String cpf = '';
-  String password = '';
-  String date = '';
+  String name = '',
+      email = '',
+      phoneNumber = '',
+      cpf = '',
+      password = '',
+      date = '';
 
   var nameMaskFormatter = MaskTextInputFormatter(
       mask:
@@ -39,6 +40,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
       },
       type: MaskAutoCompletionType.eager);
   var phoneNumberMaskFormatter = MaskTextInputFormatter(
+      mask: '(xx) xxxx-xxxx',
+      filter: {
+        "x": RegExp(r'[0-9]'),
+      },
+      type: MaskAutoCompletionType.lazy);
+  var phoneNumberMaskFormatterSecond = MaskTextInputFormatter(
       mask: '(xx) xxxxx-xxxx',
       filter: {
         "x": RegExp(r'[0-9]'),
@@ -82,7 +89,6 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                       child: Column(
                         children: [
                           AutoSizeTextField(
-                            
                             textAlign: TextAlign.center,
                             inputFormatters: [nameMaskFormatter],
                             controller: _nameTextController,
@@ -176,7 +182,27 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                           ),
                           TextField(
                             textAlign: TextAlign.center,
-                            inputFormatters: [phoneNumberMaskFormatter],
+                            inputFormatters: [
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              /* USA ESSA POHA*/
+                              TextInputMask(
+                                mask: ['(99) 9999-9999', '(99) 99999-9999'],
+                                reverse: false,
+                              )
+                            ],
                             controller: _phoneTextController,
                             onChanged: (text) {
                               phoneNumber = text;
@@ -354,6 +380,11 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                           const SizedBox(
                             height: 15,
                           ),
+                          GestureDetector(
+                            child: Container(child: Icon(Icons.add)),
+                            onTap: () => print(
+                                phoneNumber.replaceAll(RegExp(r"\D"), "")),
+                          )
                         ],
                       ),
                     ),

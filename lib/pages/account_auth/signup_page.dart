@@ -11,26 +11,24 @@ import '../../services/colors.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+  static String name = '',
+      surname = '',
+      email = '',
+      phone = '',
+      password = '',
+      confirmPassword = '';
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _nameTextController = TextEditingController();
-  final _surnameTextController = TextEditingController();
-  final _emailOrPhoneTextController = TextEditingController();
-  final _phoneNumberTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
-  final _confirmPasswordTextController = TextEditingController();
-
-  String name = '';
-  String surname = '';
-  String email = '';
-  String phone = '';
-  String phoneNumber = '';
-  String password = '';
-  String confirmPassword = '';
+  final _nameTextController = TextEditingController(),
+      _surnameTextController = TextEditingController(),
+      _emailTextController = TextEditingController(),
+      _phoneNumberTextController = TextEditingController(),
+      _passwordTextController = TextEditingController(),
+      _confirmPasswordTextController = TextEditingController();
 
   Future<bool> _onWillPop() async {
     AppController.instance.isSignUpCheckboxConfirmed = false;
@@ -99,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               TextField(
                                 controller: _nameTextController,
                                 onChanged: (text) {
-                                  name = text;
+                                  SignUpPage.name = text;
                                 },
                                 keyboardType: TextInputType.name,
                                 decoration: InputDecoration(
@@ -122,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               TextField(
                                 controller: _surnameTextController,
                                 onChanged: (text) {
-                                  surname = text;
+                                  SignUpPage.surname = text;
                                 },
                                 keyboardType: TextInputType.name,
                                 decoration: InputDecoration(
@@ -143,15 +141,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 10,
                               ),
                               TextField(
-                                controller: _emailOrPhoneTextController,
+                                controller: _emailTextController,
                                 onChanged: (text) {
-                                  email = text;
+                                  SignUpPage.email = text;
                                 },
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                       onPressed: () {
-                                        _emailOrPhoneTextController.clear();
+                                        _emailTextController.clear();
                                       },
                                       icon: const Icon(Icons.clear)),
                                   labelText: 'Email',
@@ -168,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               TextField(
                                 controller: _phoneNumberTextController,
                                 onChanged: (text) {
-                                  phoneNumber = text;
+                                  SignUpPage.phone = text;
                                 },
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
@@ -191,7 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               TextField(
                                 controller: _passwordTextController,
                                 onChanged: (text) {
-                                  password = text;
+                                  SignUpPage.password = text;
                                 },
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -214,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               TextField(
                                 controller: _confirmPasswordTextController,
                                 onChanged: (text) {
-                                  confirmPassword = text;
+                                  SignUpPage.confirmPassword = text;
                                 },
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -308,7 +306,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                           .instance.isSignUpCheckboxConfirmed
                                       ? const Color.fromARGB(255, 255, 255, 255)
                                       : const Color(0xFF959595),
-                                  animatedOn: AnimatedOn.onHover,
                                   onPress: () {
                                     AppController
                                             .instance.isSignUpCheckboxConfirmed
@@ -317,6 +314,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         : _showCheckboxFalseAlert();
                                   },
                                   text: 'Cadastrar',
+                                  animatedOn: AnimatedOn.onHover,
                                   textStyle: TextStyle(
                                     color: AppController
                                             .instance.isSignUpCheckboxConfirmed

@@ -66,6 +66,10 @@ cupertino_icons
 2.12
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.5/
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.5/lib/
+easy_mask
+2.12
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/easy_mask-2.0.1/
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/easy_mask-2.0.1/lib/
 fake_async
 2.12
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/fake_async-1.3.1/
@@ -94,6 +98,10 @@ file_selector_windows
 2.18
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_windows-0.9.3/
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_windows-0.9.3/lib/
+fluent_ui
+3.0
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/fluent_ui-4.7.4/
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/fluent_ui-4.7.4/lib/
 flutter_animated_button
 2.12
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_animated_button-2.0.3/
@@ -202,6 +210,10 @@ material_color_utilities
 2.17
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/material_color_utilities-0.5.0/
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/material_color_utilities-0.5.0/lib/
+math_expressions
+2.12
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/math_expressions-2.4.0/
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/math_expressions-2.4.0/lib/
 meta
 2.12
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.9.1/
@@ -270,6 +282,14 @@ provider
 2.12
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5/
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5/lib/
+recase
+2.12
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/recase-4.1.0/
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/recase-4.1.0/lib/
+scroll_pos
+2.15
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/scroll_pos-0.4.0/
+file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/scroll_pos-0.4.0/lib/
 scroll_to_hide
 3.0
 file:///C:/Users/caioc/AppData/Local/Pub/Cache/hosted/pub.dev/scroll_to_hide-2.0.1/

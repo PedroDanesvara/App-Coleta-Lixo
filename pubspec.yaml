@@ -42,6 +42,7 @@ dependencies:
   scroll_to_hide: ^2.0.0
   image_picker: ^1.0.2
   mask_text_input_formatter: ^2.5.0
+  easy_mask: ^2.0.1
   path_provider: ^2.1.0
   shared_preferences: ^2.2.0
   page_transition: ^2.0.9
@@ -49,6 +50,7 @@ dependencies:
   auto_size_text_field: ^2.2.1
   provider: ^6.0.5
   intl: ^0.18.1
+  fluent_ui: ^4.4.0
 
 
   # The following adds the Cupertino Icons font to your application.

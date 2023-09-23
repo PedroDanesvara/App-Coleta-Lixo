@@ -17,8 +17,7 @@ class AppNavigator extends StatefulWidget {
 }
 
 class _AppNavigatorState extends State<AppNavigator> {
-  int notificationAdd = 0;
-  int selectedPage = 0;
+  int notificationAdd = 0, selectedPage = 0;
   List<Widget> pages = [
     const HomePage(),
     const RegisterAddressPage(),
