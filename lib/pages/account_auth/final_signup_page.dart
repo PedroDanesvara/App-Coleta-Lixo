@@ -148,7 +148,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         AppController.instance.catadorState
                                             ? Colors.white
                                             : MyColors.primary,
-                                    animatedOn: AnimatedOn.onHover,
                                     text: 'Catador',
                                     textStyle: TextStyle(
                                         color: notifier.darkTheme
@@ -193,7 +192,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         AppController.instance.coletorState
                                             ? Colors.white
                                             : MyColors.primary,
-                                    animatedOn: AnimatedOn.onHover,
                                     text: 'Coletor',
                                     textStyle: TextStyle(
                                         color: notifier.darkTheme
@@ -238,7 +236,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         AppController.instance.sucatariaState
                                             ? Colors.white
                                             : MyColors.primary,
-                                    animatedOn: AnimatedOn.onHover,
                                     text: 'Sucataria',
                                     textStyle: TextStyle(
                                       color: notifier.darkTheme
@@ -278,7 +275,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                             ? const Color.fromARGB(
                                                 255, 255, 255, 255)
                                             : const Color(0xFF959595),
-                                    animatedOn: AnimatedOn.onHover,
                                     onPress: () {
                                       AppController.instance.occupationState
                                           ? Navigator.of(context)
@@ -288,6 +284,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                           : _showCheckboxNotCompletedAlert();
                                     },
                                     text: 'Concluir',
+                                    animatedOn: AnimatedOn.onHover,
                                     textStyle: TextStyle(
                                       color:
                                           AppController.instance.occupationState

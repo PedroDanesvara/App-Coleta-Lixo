@@ -5,14 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppController extends ChangeNotifier {
   static AppController instance = AppController();
 
-  bool isDarkTheme = false;
-
-  bool isSignUpCheckboxConfirmed = false;
-
-  bool catadorState = false;
-  bool coletorState = false;
-  bool sucatariaState = false;
-  bool occupationState = false;
+  bool isDarkTheme = false,
+      isSignUpCheckboxConfirmed = false,
+      catadorState = false,
+      coletorState = false,
+      sucatariaState = false,
+      occupationState = false;
 
   int bottomNotifications = 0;
 

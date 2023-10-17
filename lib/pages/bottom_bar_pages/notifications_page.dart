@@ -17,16 +17,6 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  List allItems = [
-    'destaque',
-    'dica',
-    'avaliacao',
-    'lixo_entregue',
-    'lixo_coletado',
-    'pagamento_realizado',
-    'interesse',
-    'catador',
-  ];
   List selectedItems = [];
 
   Future<bool> _onWillPop() async {
@@ -67,9 +57,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             fontFamily: 'Roboto',
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 10,
                       ),
                       ValueListenableBuilder(
                         valueListenable:
@@ -442,10 +429,17 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                     context: context,
                                     builder: (context) {
                                       return NotificationDialog(
-                                        items: allItems,
-                                        selectedItems: selectedItems,
+                                        items: NotificationRepository()
+                                            .allItems
+                                            .map((item) => item.notification)
+                                            .toList(),
+                                        selectedItems: NotificationRepository()
+                                            .selectedItems,
                                         onSelectedItemsListChanged: (items) {
                                           selectedItems = items;
+                                          NotificationRepository()
+                                              .selectedItems = items;
+                                              
                                           if (selectedItems
                                                   .contains('destaque') ||
                                               selectedItems.contains('dica') ||

@@ -1,4 +1,5 @@
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/notifications_page.dart';
+import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,9 @@ class NotificationDialog extends StatefulWidget {
     required this.onSelectedItemsListChanged,
   });
 
-  final List items;
-  final List selectedItems;
+  final List items, selectedItems;
   final ValueChanged<List> onSelectedItemsListChanged;
+
 
   @override
   State<NotificationDialog> createState() => _NotificationDialogState();
@@ -71,9 +72,15 @@ class _NotificationDialogState extends State<NotificationDialog> {
                             onPressed: () {
                               setState(
                                 () {
+                                 
+
+                                 
+                                  print(NotificationRepository().selectedItems);
+
                                   _tempSelectedItems.add(itemName);
                                   widget.onSelectedItemsListChanged(
                                       _tempSelectedItems);
+
                                   NotificationsPage
                                       .notificationItemCount.value++;
                                 },

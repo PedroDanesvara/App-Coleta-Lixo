@@ -66,3 +66,24 @@ class ScrollRemove extends ScrollBehavior {
     return child;
   }
 }
+
+class NotificationItems {
+  String notification;
+
+  NotificationItems({required this.notification});
+}
+
+class NotificationRepository {
+  final List<NotificationItems> allItems = [
+    NotificationItems(notification: 'destaque'),
+    NotificationItems(notification: 'dica'),
+    NotificationItems(notification: 'avaliacao'),
+    NotificationItems(notification: 'lixo_entregue'),
+    NotificationItems(notification: 'lixo_coletado'),
+    NotificationItems(notification: 'pagamento_realizado'),
+    NotificationItems(notification: 'interesse'),
+    NotificationItems(notification: 'catador'),
+  ];
+  List selectedItems = [];
+  List tempSelectedItems = [];
+}
