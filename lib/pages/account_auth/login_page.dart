@@ -98,7 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                                   labelText: 'Usuário',
                                   border: OutlineInputBorder(),
                                   contentPadding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 10),
+                                    vertical: 10,
+                                    horizontal: 10,
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -161,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Flexible(
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        elevation: 2,
+                                        elevation: 2.0,
                                         shadowColor: const Color.fromARGB(
                                             216, 255, 255, 255),
                                         backgroundColor: notifier.darkTheme

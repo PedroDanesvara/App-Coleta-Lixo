@@ -12,6 +12,9 @@ import 'package:provider/provider.dart';
 class AppNavigator extends StatefulWidget {
   const AppNavigator({super.key});
 
+  static ValueNotifier selectedPage = ValueNotifier(0);
+  static int notificationAdd = 0;
+
   @override
   State<AppNavigator> createState() => _AppNavigatorState();
 }
@@ -40,7 +43,7 @@ class _AppNavigatorState extends State<AppNavigator> {
                   valueListenable: NotificationsPage.notificationItemCount,
                   builder: (context, value, child) {
                     return Scaffold(
-                      body: pages.elementAt(selectedPage),
+                      body: pages.elementAt(AppNavigator.selectedPage.value),
                       bottomNavigationBar: NavigationBar(
                         indicatorColor: MyColors.primary[700],
                         animationDuration: const Duration(
@@ -131,11 +134,11 @@ class _AppNavigatorState extends State<AppNavigator> {
                             ),
                           ),
                         ],
-                        selectedIndex: selectedPage,
+                        selectedIndex: AppNavigator.selectedPage.value,
                         onDestinationSelected: (int value) {
                           setState(
                             () {
-                              selectedPage = value;
+                              AppNavigator.selectedPage.value = value;
                             },
                           );
                         },

@@ -2,6 +2,9 @@ import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
 import 'package:app_coleta_lixo/pages/account_auth/final_signup_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/pages/user_pages/awards_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/confirmation_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/second_confirmation_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/create_offer_page_final.dart';
 import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
@@ -59,6 +62,10 @@ class AppWidget extends StatelessWidget {
                   '/paymentpage': (context) => const PaymentPage(),
                   '/settingspage': (context) => const UserSettingsPage(),
                   '/personaldata': (context) => const PersonalDataPage(),
+                  '/offerpage': (context) => const CreateOfferPage(),
+                  '/finalofferpage': (context) => const CreateOfferPageFinal(),
+                  '/confirmationpage': (context) => const ConfirmationPage(),
+                  '/secondconfirmation': (context) => const SecondConfirmationPage(),
                 },
               );
             },
