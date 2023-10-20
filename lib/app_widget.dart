@@ -4,7 +4,7 @@ import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controll
 import 'package:app_coleta_lixo/pages/user_pages/awards_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/confirmation_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/second_confirmation_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/create_offer_page_final.dart';
+import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page_final.dart';
 import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
@@ -53,8 +53,8 @@ class AppWidget extends StatelessWidget {
                   '/finalsignup': (context) => const FinalSignUpPage(),
                   '/ppp': (context) => const PrivacyPolicyPage(),
                   '/tou': (context) => const TermsOfUsePage(),
-                  '/mappage': (context) => const RegisterAddressPage(),
                   '/createoffer': (context) => const CreateOfferPage(),
+                  '/locationpage': (context) => const CreateOfferPage(),
                   '/ratingpage': (context) => const RatingPage(),
                   '/awardspage': (context) => const AwardsPage(),
                   '/historypage': (context) => const HistoryPage(),
@@ -65,7 +65,8 @@ class AppWidget extends StatelessWidget {
                   '/offerpage': (context) => const CreateOfferPage(),
                   '/finalofferpage': (context) => const CreateOfferPageFinal(),
                   '/confirmationpage': (context) => const ConfirmationPage(),
-                  '/secondconfirmation': (context) => const SecondConfirmationPage(),
+                  '/secondconfirmation': (context) =>
+                      const SecondConfirmationPage(),
                 },
               );
             },

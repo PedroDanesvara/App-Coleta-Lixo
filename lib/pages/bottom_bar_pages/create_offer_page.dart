@@ -17,9 +17,10 @@ class CreateOfferPage extends StatefulWidget {
 
   static String trashType = '', trashWeight = '', trashValue = '';
 
-  static final trashTypeTextController = TextEditingController();
-  static final trashWeightTextController = TextEditingController();
-  static final trashValueTextController = TextEditingController();
+//Nao sei pq coloquei esses controladores aqui
+  static final trashTypeTextController = TextEditingController(),
+      trashWeightTextController = TextEditingController(),
+      trashValueTextController = TextEditingController();
 
   static var parsedTrashWeight =
       double.tryParse(CreateOfferPage.trashWeight) ?? 0;
@@ -39,12 +40,11 @@ class CreateOfferPage extends StatefulWidget {
 }
 
 class _CreateOfferPageState extends State<CreateOfferPage> {
-  bool _isButtonEnabled = false;
-
   Future<bool> _onWillPop() async {
     return false;
   }
 
+  bool _isButtonEnabled = false;
   var trashTypeMaskFormatter = MaskTextInputFormatter(
       mask:
           'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',

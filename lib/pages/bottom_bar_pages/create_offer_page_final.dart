@@ -1,7 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'dart:async';
-
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';

@@ -128,7 +128,6 @@ flutter:
   - assets/images/svg_icons/product_interest_icon.svg
   - assets/images/svg_icons/need_collector_icon.svg
   - assets/images/svg_icons/user_settings_page_icons/cry_emoji.svg
-  - assets/images/svg_icons/thumbs_up.svg
 
   #Assets PNGs
   - assets/images/logo.png
@@ -138,6 +137,7 @@ flutter:
   - assets/images/google_logo.png
   - assets/images/instagram_logo.png
   - assets/images/facebook_logo.png
+  - assets/images/location_photo.png
   
   #Avatares
   - assets/images/carla_dias.png

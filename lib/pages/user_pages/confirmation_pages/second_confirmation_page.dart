@@ -1,14 +1,8 @@
 import 'dart:async';
-import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:lottie/lottie.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
-import 'package:app_coleta_lixo/providers/state_controller.dart';
-import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
-import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 class SecondConfirmationPage extends StatefulWidget {
   const SecondConfirmationPage({super.key});

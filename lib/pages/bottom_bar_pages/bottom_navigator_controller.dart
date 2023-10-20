@@ -1,8 +1,8 @@
+import 'package:app_coleta_lixo/pages/bottom_bar_pages/location_page.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/home_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/notifications_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/profile_page.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -23,7 +23,7 @@ class _AppNavigatorState extends State<AppNavigator> {
   int notificationAdd = 0, selectedPage = 0;
   List<Widget> pages = [
     const HomePage(),
-    const RegisterAddressPage(),
+    const LocationPage(),
     const CreateOfferPage(),
     const NotificationsPage(),
     const ProfilePage(),
