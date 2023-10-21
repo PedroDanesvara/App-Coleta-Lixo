@@ -153,7 +153,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                               _isOccupationSelected();
                               if (AppController.instance.sucatariaState ==
                                   true) {
-                                user_types = ['catador'];
+                                user_types.add('catador');
                               }
                             },
                           )),
@@ -194,9 +194,9 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                             onPress: () {
                               AppController.instance.coletorSet();
                               _isOccupationSelected();
-                              if (AppController.instance.sucatariaState ==
+                              if (AppController.instance.coletorState ==
                                   true) {
-                                user_types = ['coletor'];
+                                user_types.add('coletor');
                               }
                             },
                           )),
@@ -239,7 +239,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                               _isOccupationSelected();
                               if (AppController.instance.sucatariaState ==
                                   true) {
-                                user_types = ['sucataria'];
+                                user_types.add('sucataria');
                               }
                             },
                           )),
@@ -275,7 +275,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                       email: SignUpPage.email,
                                       password: SignUpPage.password,
                                       telefone: '992664938',
-                                      user_types: ["produtor"]);
+                                      user_types: user_types);
                                   AppController.instance.occupationState
                                       ? Navigator.of(context)
                                           .pushNamedAndRemoveUntil(

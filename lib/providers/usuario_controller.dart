@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 class UsuarioController {
   final IUsuarioRepository repository;
 
-  final ValueNotifier<Profile?> state = ValueNotifier<Profile?>(null);
-
   final ValueNotifier<String> erro = ValueNotifier<String>('');
 
   UsuarioController({required this.repository});
@@ -21,7 +19,7 @@ class UsuarioController {
       required String telefone,
       required List<String> user_types}) async {
     try {
-      final result = await repository.criarUsuario(
+      await repository.criarUsuario(
           username: username,
           first_name: first_name,
           last_name: last_name,
@@ -29,7 +27,38 @@ class UsuarioController {
           password: password,
           telefone: telefone,
           user_types: user_types);
-      state.value = result;
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuario(
+      {required String? cpf,
+    required DateTime? dt_nascimento,
+    required String? endereco,
+    required int? n_coletas,
+    required String? perfil}) async {
+    try {
+      await repository.atualizarUsuario(
+          cpf: cpf,
+          dt_nascimento: dt_nascimento,
+          endereco: endereco,
+          n_coletas: n_coletas,
+          perfil: perfil);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future deletarUsuario() async {
+    try {
+      await repository.deletarUsuario();
     } on NotFoundException catch (e) {
       erro.value = e.message;
     } catch (e) {

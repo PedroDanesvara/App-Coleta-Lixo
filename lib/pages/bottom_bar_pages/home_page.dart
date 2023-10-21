@@ -6,6 +6,7 @@ import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:app_coleta_lixo/pages/account_auth/signup_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -140,7 +141,7 @@ class HomePageState extends State<HomePage> {
                               radius: 25.0,
                               backgroundImage:
                                   AssetImage('assets/images/pedro_avatar.jpg')),
-                          title: const Text('Pedro Henrique',
+                          title: Text('${SignUpPage.name} ${SignUpPage.surname}',
                               style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w600,

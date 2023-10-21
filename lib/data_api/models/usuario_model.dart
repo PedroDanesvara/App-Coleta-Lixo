@@ -1,20 +1,20 @@
 class Profile {
   final User user;
-  final String cpf;
-  final DateTime dt_nascimento;
-  final String endereco;
-  final int n_coletas;
-  final String perfil;
+  final String? cpf;
+  final DateTime? dt_nascimento;
+  final String? endereco;
+  final int? n_coletas;
+  final String? perfil;
   final String telefone;
   final List<String> user_types;
 
   Profile({
     required this.user,
-    required this.cpf,
-    required this.dt_nascimento,
-    required this.endereco,
-    required this.n_coletas,
-    required this.perfil,
+    this.cpf,
+    this.dt_nascimento,
+    this.endereco,
+    this.n_coletas,
+    this.perfil,
     required this.telefone,
     required this.user_types,
   });

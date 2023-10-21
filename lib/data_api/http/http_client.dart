@@ -7,6 +7,11 @@ abstract class IHttpClient {
     required String url,
     required Map<String, dynamic> data,
   });
+  Future patch({
+    required String url,
+    required Map<String, dynamic> data,
+  });
+  Future delete({required String url});
 }
 
 class HttpClient implements IHttpClient {
@@ -27,6 +32,24 @@ class HttpClient implements IHttpClient {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(data),
+    );
+  }
+
+  @override
+  Future patch({required String url, required Map<String, dynamic> data}) async {
+    return await client.post(
+      Uri.parse(url),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data),
+    );
+  }
+
+  @override
+  Future delete({required String url}) async {
+    return await client.get(
+      Uri.parse(url),
     );
   }
 }

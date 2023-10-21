@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:app_coleta_lixo/pages/account_auth/signup_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -117,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Center(
                       child: Text(
-                        'Pedro Henrique',
+                        '${SignUpPage.name} ${SignUpPage.surname}',
                         style: TextStyle(
                             fontSize: 18,
                             fontFamily: 'Roboto',
