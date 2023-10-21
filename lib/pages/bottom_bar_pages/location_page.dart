@@ -72,7 +72,6 @@ class _LocationPageState extends State<LocationPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: Column(
                             children: [
-                              // Campo de texto para o endereço
                               TextField(
                                 controller: _addressTextController,
                                 onChanged: (text) {
@@ -89,7 +88,6 @@ class _LocationPageState extends State<LocationPage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              // Campo de texto para o bairro
                               TextField(
                                 controller: _neighborhoodTextController,
                                 onChanged: (text) {
@@ -106,7 +104,6 @@ class _LocationPageState extends State<LocationPage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              // Campo de texto para a cidade
                               TextField(
                                 controller: _cityTextController,
                                 onChanged: (text) {
@@ -123,7 +120,6 @@ class _LocationPageState extends State<LocationPage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              // Campo de texto para o CEP
                               TextField(
                                 controller: _cepTextController,
                                 onChanged: (text) {
@@ -140,7 +136,6 @@ class _LocationPageState extends State<LocationPage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              // Campo de texto para a localização próxima
                               TextField(
                                 controller: _nearbyLocationTextController,
                                 onChanged: (text) {
@@ -201,7 +196,6 @@ class _LocationPageState extends State<LocationPage> {
                           child: Row(
                             children: [
                               Flexible(
-                                // Botão "Salvar"
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     elevation: 0.0,
@@ -210,9 +204,7 @@ class _LocationPageState extends State<LocationPage> {
                                         : MyColors.primary,
                                     minimumSize: const Size.fromHeight(50),
                                   ),
-                                  onPressed: () {
-                                    // Adicione a ação de salvar aqui
-                                  },
+                                  onPressed: () {},
                                   child: Text(
                                     'Salvar',
                                     style: TextStyle(
