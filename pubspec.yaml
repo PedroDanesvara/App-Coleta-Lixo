@@ -133,9 +133,11 @@ flutter:
   - assets/images/logo.png
   - assets/images/splash_logo.png
   - assets/images/icon_logo.png
+  - assets/images/trash_photo.png
   - assets/images/google_logo.png
   - assets/images/instagram_logo.png
   - assets/images/facebook_logo.png
+  - assets/images/location_photo.png
   
   #Avatares
   - assets/images/carla_dias.png
@@ -145,6 +147,8 @@ flutter:
 
   #Animações JSON
   - assets/animated/under_construction.json
+  - assets/animated/recycling.json
+  - assets/animated/thumbs_up.json
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

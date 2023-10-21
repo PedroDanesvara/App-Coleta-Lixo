@@ -98,7 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                                   labelText: 'Usuário',
                                   border: OutlineInputBorder(),
                                   contentPadding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 10),
+                                    vertical: 10,
+                                    horizontal: 10,
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -124,14 +126,12 @@ class _LoginPageState extends State<LoginPage> {
                               Row(
                                 children: [
                                   Flexible(
-                                    //Botão pressionável de "Entrar"
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                           elevation: 0.0,
                                           minimumSize:
                                               const Size.fromHeight(50),
                                           shadowColor: Colors.transparent),
-                                      //Navegação entre telas
                                       onPressed: () {
                                         if (password != '123' ||
                                             email != '123') {
@@ -143,8 +143,11 @@ class _LoginPageState extends State<LoginPage> {
                                                   (route) => false);
                                         }
                                       },
-                                      child: const Text(
+                                      child: Text(
                                           style: TextStyle(
+                                              color: notifier.darkTheme
+                                                  ? MyColors.primary[50]
+                                                  : Colors.white,
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
                                               fontFamily: 'Roboto'),
@@ -161,9 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Flexible(
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        elevation: 2,
-                                        shadowColor: const Color.fromARGB(
-                                            216, 255, 255, 255),
+                                        elevation: 0.0,
                                         backgroundColor: notifier.darkTheme
                                             ? MyColors.grayScale
                                             : Colors.white,
@@ -177,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                                         'Cadastrar',
                                         style: TextStyle(
                                           color: notifier.darkTheme
-                                              ? MyColors.primary[300]
+                                              ? MyColors.primary[50]
                                               : MyColors.primary,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
@@ -252,8 +253,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-//Construção de widget próprio muito útil para referenciar o corpo principal da página.
-//Pode ser também utilizado para equipe adicionar um background na tela de login no futuro.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,12 +2,14 @@ import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
 import 'package:app_coleta_lixo/pages/account_auth/final_signup_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/pages/user_pages/awards_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/confirmation_page.dart';
+import 'package:app_coleta_lixo/pages/user_pages/confirmation_pages/second_confirmation_page.dart';
+import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page_final.dart';
 import 'package:app_coleta_lixo/pages/user_pages/history_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/privacy_policy_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/personal_data_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/terms_of_use_page.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -50,8 +52,8 @@ class AppWidget extends StatelessWidget {
                   '/finalsignup': (context) => const FinalSignUpPage(),
                   '/ppp': (context) => const PrivacyPolicyPage(),
                   '/tou': (context) => const TermsOfUsePage(),
-                  '/mappage': (context) => const RegisterAddressPage(),
                   '/createoffer': (context) => const CreateOfferPage(),
+                  '/locationpage': (context) => const CreateOfferPage(),
                   '/ratingpage': (context) => const RatingPage(),
                   '/awardspage': (context) => const AwardsPage(),
                   '/historypage': (context) => const HistoryPage(),
@@ -59,6 +61,11 @@ class AppWidget extends StatelessWidget {
                   '/paymentpage': (context) => const PaymentPage(),
                   '/settingspage': (context) => const UserSettingsPage(),
                   '/personaldata': (context) => const PersonalDataPage(),
+                  '/offerpage': (context) => const CreateOfferPage(),
+                  '/finalofferpage': (context) => const CreateOfferPageFinal(),
+                  '/confirmationpage': (context) => const ConfirmationPage(),
+                  '/secondconfirmation': (context) =>
+                      const SecondConfirmationPage(),
                 },
               );
             },

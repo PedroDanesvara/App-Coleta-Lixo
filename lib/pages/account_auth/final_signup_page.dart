@@ -66,8 +66,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                   child: Text(
                                     'Cadastro',
                                     style: TextStyle(
-                                      //If-else pra trocar a cor do texto do botão de
-                                      //"Cadastrar" para deixar mais visível no Dark Mode.
                                       color: notifier.darkTheme
                                           ? MyColors.primary[300]
                                           : MyColors.primary,
@@ -304,14 +302,11 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                             Row(
                               children: [
                                 Flexible(
-                                  //Botão pressionável de "Cadastrar"
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       elevation: 2,
                                       shadowColor: const Color.fromARGB(
                                           216, 255, 255, 255),
-                                      //If-else pra trocar a cor do botão "Cadastrar" para
-                                      //deixar adaptável ao Dark Mode.
                                       backgroundColor: notifier.darkTheme
                                           ? MyColors.grayScale
                                           : Colors.white,
@@ -336,8 +331,6 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                     child: Text(
                                       'Voltar',
                                       style: TextStyle(
-                                        //If-else pra trocar a cor do texto do botão de
-                                        //"Cadastrar" para deixar mais visível no Dark Mode.
                                         color: notifier.darkTheme
                                             ? MyColors.primary[300]
                                             : MyColors.primary,
