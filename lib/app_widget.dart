@@ -10,7 +10,6 @@ import 'package:app_coleta_lixo/pages/user_pages/payment_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/user_settings_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/privacy_policy_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/rating_page.dart';
-import 'package:app_coleta_lixo/pages/user_pages/register_address_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/personal_data_page.dart';
 import 'package:app_coleta_lixo/pages/user_pages/terms_of_use_page.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
