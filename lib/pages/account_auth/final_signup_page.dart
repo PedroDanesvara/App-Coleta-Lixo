@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/state_controller.dart';
+import '../../providers/usuario_controller.dart';
 
 class FinalSignUpPage extends StatefulWidget {
   const FinalSignUpPage({super.key});
@@ -274,6 +275,14 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                                 255, 255, 255, 255)
                                             : const Color(0xFF959595),
                                     onPress: () {
+                                      usuarioController.criarUsuario(
+                                      username: SignUpPage.name,
+                                      first_name: SignUpPage.name,
+                                      last_name: SignUpPage.surname,
+                                      email: SignUpPage.email,
+                                      password: SignUpPage.password,
+                                      telefone: '992664938',
+                                      user_types: user_types);
                                       AppController.instance.occupationState
                                           ? Navigator.of(context)
                                               .pushNamedAndRemoveUntil(
