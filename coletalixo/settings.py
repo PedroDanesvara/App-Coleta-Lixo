@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apps.oferta.apps.OfertaConfig',
     'apps.coletor.apps.ColetorConfig',
     'apps.produtor.apps.ProdutorConfig',
+    'apps.usuario.apps.UsuarioConfig',
 ]
 
 MIDDLEWARE = [
