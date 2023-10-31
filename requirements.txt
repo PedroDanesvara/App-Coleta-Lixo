@@ -1,7 +1,10 @@
-Django==4.2.1
 psycopg
 psycopg-binary
 gunicorn==20.1.0
 python-dotenv
+markdown
+Django==4.2.1
 djangorestframework
+django-filter
+django-cors-headers
 djangorestframework-simplejwt

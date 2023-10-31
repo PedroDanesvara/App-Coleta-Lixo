@@ -9,5 +9,9 @@ class Oferta(models.Model):
     produtor = models.ForeignKey(Produtor, on_delete=models.CASCADE, help_text="Nome do Ofertante", related_name='ofertas')
     gps_coord = models.CharField(max_length=500, help_text="Coordenada gps da coleta")
 
+    class Meta:
+        verbose_name = "Oferta"
+        verbose_name_plural = "Ofertas"
+        
     def __str__(self):
         return f"{self.tipo_material} - {self.estado} - {self.produtor}"
