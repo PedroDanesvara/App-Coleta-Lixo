@@ -35,19 +35,80 @@ class UsuarioController {
     }
   }
 
-  Future atualizarUsuario(
-      {required String? cpf,
-    required DateTime? dt_nascimento,
-    required String? endereco,
-    required int? n_coletas,
-    required String? perfil}) async {
+  Future atualizarUsuarioNome(
+      {required String username,
+      required String first_name,
+      required String last_name}) async {
     try {
-      await repository.atualizarUsuario(
-          cpf: cpf,
-          dt_nascimento: dt_nascimento,
-          endereco: endereco,
-          n_coletas: n_coletas,
-          perfil: perfil);
+      await repository.atualizarUsuarioNome(
+          username: username,
+          first_name: first_name,
+          last_name: last_name);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuarioEmail(
+      {required String email}) async {
+    try {
+      await repository.atualizarUsuarioEmail(
+          email: email);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuarioTelefone(
+      {required String telefone}) async {
+    try {
+      await repository.atualizarUsuarioTelefone(
+          telefone: telefone);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuarioCpf(
+      {required String cpf}) async {
+    try {
+      await repository.atualizarUsuarioCpf(
+          cpf: cpf);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuarioPassword(
+      {required String password}) async {
+    try {
+      await repository.atualizarUsuarioPassword(
+          password: password);
+    } on NotFoundException catch (e) {
+      erro.value = e.message;
+    } catch (e) {
+      print(e);
+      erro.value = e.toString();
+    }
+  }
+
+  Future atualizarUsuarioDataNascimento(
+      {required String dt_nascimento}) async {
+    try {
+      await repository.atualizarUsuarioDataNascimento(
+          dt_nascimento: dt_nascimento);
     } on NotFoundException catch (e) {
       erro.value = e.message;
     } catch (e) {

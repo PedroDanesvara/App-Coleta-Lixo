@@ -1,3 +1,4 @@
+import 'package:app_coleta_lixo/pages/account_auth/signup_page.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -9,6 +10,8 @@ import 'package:provider/provider.dart';
 
 import '../../providers/state_controller.dart';
 import '../../providers/usuario_controller.dart';
+import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
 
 class FinalSignUpPage extends StatefulWidget {
   const FinalSignUpPage({super.key});
@@ -18,6 +21,13 @@ class FinalSignUpPage extends StatefulWidget {
 }
 
 class _FinalSignUpPageState extends State<FinalSignUpPage> {
+  final UsuarioController usuarioController = UsuarioController(
+      repository: UsuarioRepository(
+    client: HttpClient(),
+  ));
+
+  List<String> user_types = [];
+
   Future<bool> _onWillPop() async {
     AppController.instance.catadorState = false;
     AppController.instance.coletorState = false;
@@ -156,6 +166,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Roboto'),
                                     onPress: () {
+                                      user_types.add("Catador");
                                       AppController.instance.catadorSet();
                                       _isOccupationSelected();
                                     },
@@ -200,6 +211,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Roboto'),
                                     onPress: () {
+                                      user_types.add("Coletor");
                                       AppController.instance.coletorSet();
                                       _isOccupationSelected();
                                     },
@@ -245,6 +257,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                       fontFamily: 'Roboto',
                                     ),
                                     onPress: () {
+                                      user_types.add("Sucataria");
                                       AppController.instance.sucatariaSet();
                                       _isOccupationSelected();
                                     },
@@ -276,13 +289,13 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                             : const Color(0xFF959595),
                                     onPress: () {
                                       usuarioController.criarUsuario(
-                                      username: SignUpPage.name,
-                                      first_name: SignUpPage.name,
-                                      last_name: SignUpPage.surname,
-                                      email: SignUpPage.email,
-                                      password: SignUpPage.password,
-                                      telefone: '992664938',
-                                      user_types: user_types);
+                                          username: SignUpPage.name,
+                                          first_name: SignUpPage.name,
+                                          last_name: SignUpPage.surname,
+                                          email: SignUpPage.email,
+                                          password: SignUpPage.password,
+                                          telefone: SignUpPage.phone,
+                                          user_types: user_types);
                                       AppController.instance.occupationState
                                           ? Navigator.of(context)
                                               .pushNamedAndRemoveUntil(

@@ -20,5 +20,5 @@ class Profile(models.Model):
 
     user_types = ArrayField(models.CharField(max_length=20, choices=USER_TYPES))
     
-    def _str_(self):
+    def __str__(self):
         return self.user.username

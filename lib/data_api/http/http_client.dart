@@ -37,7 +37,7 @@ class HttpClient implements IHttpClient {
 
   @override
   Future patch({required String url, required Map<String, dynamic> data}) async {
-    return await client.post(
+    return await client.patch(
       Uri.parse(url),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -48,7 +48,7 @@ class HttpClient implements IHttpClient {
 
   @override
   Future delete({required String url}) async {
-    return await client.get(
+    return await client.delete(
       Uri.parse(url),
     );
   }

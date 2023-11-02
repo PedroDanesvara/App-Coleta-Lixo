@@ -1,5 +1,7 @@
+import 'package:app_coleta_lixo/pages/account_auth/signup_page.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
+import 'package:app_coleta_lixo/providers/usuario_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -9,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
 
 class PersonalDataPage extends StatefulWidget {
   const PersonalDataPage({super.key});
@@ -17,6 +21,11 @@ class PersonalDataPage extends StatefulWidget {
 }
 
 class _PersonalDataPageState extends State<PersonalDataPage> {
+  final UsuarioController usuarioController = UsuarioController(
+      repository: UsuarioRepository(
+    client: HttpClient(),
+  ));
+
   final _nameTextController = TextEditingController(),
       _emailTextController = TextEditingController(),
       _phoneTextController = TextEditingController(),
@@ -24,7 +33,11 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
       _passwordTextController = TextEditingController(),
       _dateTextController = TextEditingController();
 
-  String name = '',
+  List<String> name = [];
+
+  String username = '',
+      first_name = '',
+      last_name = '',
       email = '',
       phoneNumber = '',
       cpf = '',
@@ -94,7 +107,13 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             controller: _nameTextController,
                             maxLength: 100,
                             onChanged: (text) {
-                              name = text;
+                              name = text.split(' ');
+                              usuarioController.atualizarUsuarioNome(
+                                  username: name[0],
+                                  first_name: name[0],
+                                  last_name: name[1]);
+                              SignUpPage.name = name[0];
+                              SignUpPage.surname = name[1];
                             },
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
@@ -140,7 +159,9 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             textAlign: TextAlign.center,
                             controller: _emailTextController,
                             onChanged: (text) {
-                              email = text;
+                              SignUpPage.email = text;
+                              usuarioController.atualizarUsuarioEmail(
+                                  email: SignUpPage.email);
                             },
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
@@ -205,7 +226,9 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             ],
                             controller: _phoneTextController,
                             onChanged: (text) {
-                              phoneNumber = text;
+                              SignUpPage.phone = text;
+                              usuarioController.atualizarUsuarioTelefone(
+                                  telefone: SignUpPage.phone);
                             },
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
@@ -251,6 +274,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             controller: _cpfTextController,
                             onChanged: (text) {
                               cpf = text;
+                              usuarioController.atualizarUsuarioCpf(cpf: cpf);
                             },
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
@@ -295,6 +319,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             controller: _passwordTextController,
                             onChanged: (text) {
                               password = text;
+                              usuarioController.atualizarUsuarioPassword(
+                                  password: password);
                             },
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: true,
@@ -341,6 +367,8 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             controller: _dateTextController,
                             onChanged: (text) {
                               date = text;
+                              usuarioController.atualizarUsuarioDataNascimento(
+                                  dt_nascimento: date);
                             },
                             keyboardType: TextInputType.url,
                             decoration: InputDecoration(
