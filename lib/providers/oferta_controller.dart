@@ -37,6 +37,26 @@ class OfertaController {
   }
 
 
+  Future createOferta({required String tipoMaterial,
+                       required String peso,
+                       required String valor,
+                       required String agendamento}) async {
+
+    try {
+      print("Após clicar em criar oferta");
+      await repository.createOferta(tipoMaterial: tipoMaterial, 
+                                    estado: "nao_informado", 
+                                    peso: double.parse(peso), 
+                                    valor: double.parse(valor), 
+                                    idProdutor: 1, 
+                                    gpsCoord: "nao_informado",
+                                    agendamento: agendamento,);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
   Future deleteOferta({required int idOferta}) async {
   
     try{

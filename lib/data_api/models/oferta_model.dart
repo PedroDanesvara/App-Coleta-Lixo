@@ -6,6 +6,7 @@ class OfertaModel {
   final double valor;
   final int id_produtor;
   final String gps_coord;
+  final String agendamento;
 
   OfertaModel({
     required this.id_oferta,
@@ -15,6 +16,7 @@ class OfertaModel {
     required this.valor,
     required this.id_produtor,
     required this.gps_coord,
+    required this.agendamento,
   });
 
   factory OfertaModel.fromMap(Map<String, dynamic> map) {
@@ -26,6 +28,7 @@ class OfertaModel {
       valor: double.parse(map['valor']),
       id_produtor: map['produtor'],
       gps_coord: map['gps_coord'],
+      agendamento: map['agendamento'],
     );
   }
 }

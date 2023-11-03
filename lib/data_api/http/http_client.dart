@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 abstract class IHttpClient {
   Future get({required String url});
-  Future post({required String url, required Map<String, String> data,});
+  Future post({required String url, Map<String, String>? headers, required Map<String, dynamic> data,});
   delete({required String url, required Map<String, String> headers});
 }
 
@@ -17,8 +19,11 @@ class HttpClient implements IHttpClient {
 
 
   @override
-  Future post({required String url, required Map<String, String> data}) async {
-    return await client.post(Uri.parse(url), body: data,);
+  Future post({required String url, Map<String, String>? headers, required Map<String, dynamic> data}) async {
+    if(headers == null || headers.isEmpty){
+      return await client.post(Uri.parse(url), body: data,);
+    }
+    return await client.post(Uri.parse(url), headers: headers, body: jsonEncode(data),);
   }
 
 

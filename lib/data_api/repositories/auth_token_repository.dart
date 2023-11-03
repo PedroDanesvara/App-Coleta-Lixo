@@ -20,6 +20,10 @@ class AuthTokenRepository implements IAuthTokenRepository {
       "password": password,
     };
 
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+
     final response = await client.post(
       url: 'http://127.0.0.1:8000/obtain-token/',
       data: data,

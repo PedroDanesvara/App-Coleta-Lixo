@@ -3,11 +3,22 @@ import 'dart:io';
 import 'package:app_coleta_lixo/data_api/http/exceptions.dart';
 import 'package:app_coleta_lixo/data_api/http/http_client.dart';
 import 'package:app_coleta_lixo/data_api/models/oferta_model.dart';
+import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
 import 'package:app_coleta_lixo/widgets/local_storage.dart';
+import 'package:provider/provider.dart';
 
 
 abstract class IOfertaRepository {
   Future<List<OfertaModel>> getOfertas();
+
+  createOferta({required String tipoMaterial,
+                required String estado,
+                required double peso,
+                required double valor,
+                required int idProdutor,
+                required String gpsCoord,
+                required String agendamento,});
+
   deleteOferta({required int idOferta});
 }
 
@@ -39,6 +50,52 @@ class OfertaRepository implements IOfertaRepository {
     }
     else{
       throw Exception('Não foi possível carregar as ofertas');
+    }
+  }
+
+  @override
+  createOferta({required String tipoMaterial,
+                required String estado,
+                required double peso,
+                required double valor,
+                required int idProdutor,
+                required String gpsCoord,
+                required String agendamento,}) async {
+
+    LocalStorage localStorage = LocalStorage();
+
+    const url = 'http://127.0.0.1:8000/ofertas/';
+    final token = await localStorage.loadFromPrefs(keyName: "storageToken");
+    
+    Map<String, String> headers = {
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": token,
+    };                  
+
+    Map<String, dynamic> data = {
+      "tipo_material": tipoMaterial,
+      "estado": estado,
+      "peso": peso.toString(),
+      "valor": valor.toString(),
+      "produtor": idProdutor.toString(),
+      "gps_coord": gpsCoord,
+      "agendamento": agendamento,
+    };  
+    print("Pronto pra enviar requisição de criar");
+    final response = await client.post(url: url, headers: headers, data: data);
+    print("Requisição de criar, enviada");
+    if (response.statusCode >= 200 && response.statusCode < 300){
+      print("Oferta criada com sucesso!");
+      final body = jsonDecode(response.body);
+      return body;
+    }
+    else if(response.statusCode == 404){
+      print("deu erro 404");
+      throw NotFoundException('A url informada não é válida');
+    }
+    else{
+      print("Deu algum erro ai");
+      throw Exception('Não foi possível criar a Oferta!');
     }
   }
 

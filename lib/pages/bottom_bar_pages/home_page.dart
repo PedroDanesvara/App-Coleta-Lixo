@@ -384,7 +384,7 @@ class HomePageState extends State<HomePage> {
                                                   width: 1,
                                                 ),
                                                 Text(
-                                                  '- Num puxei data ainda',
+                                                  oferta.agendamento,
                                                   style: TextStyle(
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.w600,
