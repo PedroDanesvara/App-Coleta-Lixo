@@ -21,5 +21,6 @@ class LocalStorage {
     await _initPrefs();
     print("Instanciei a _prefs no save");
     _prefs.setString(keyName, value);
+    print("Terminei de salvar token no storage");
   }
 }
