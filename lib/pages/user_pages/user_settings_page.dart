@@ -434,7 +434,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                               AppController.instance.isSignUpCheckboxConfirmed =
                                   false;
                               AppController.instance.occupationState = false;
-                              AppController.instance.catadorState = false;
+                              AppController.instance.produtorState = false;
                               AppController.instance.coletorState = false;
                               AppController.instance.sucatariaState = false;
                             },

@@ -213,7 +213,7 @@ class UsuarioRepository implements IUsuarioRepository {
   @override
   deletarUsuario() async {
     final response = await client.delete(
-        url: 'http://127.0.0.1:8000/api/user/detail/${SignUpPage.name}/');
+        url: 'http://127.0.0.1:8000/api/user/delete/${SignUpPage.name}/');
 
     if (response.statusCode == 200) {
       print("Fiz requisição para API e deletei o usuário");

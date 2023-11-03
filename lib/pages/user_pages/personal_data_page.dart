@@ -8,11 +8,14 @@ import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
 import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:intl/intl.dart';
+
 
 class PersonalDataPage extends StatefulWidget {
   const PersonalDataPage({super.key});
@@ -21,6 +24,15 @@ class PersonalDataPage extends StatefulWidget {
 }
 
 class _PersonalDataPageState extends State<PersonalDataPage> {
+  String convertDateFormat(String originalDate) {
+  final inputFormat = DateFormat('dd/MM/yyyy');
+  final outputFormat = DateFormat('yyyy-MM-dd');
+
+  final date = inputFormat.parse(originalDate);
+  final formattedDate = outputFormat.format(date);
+
+  return formattedDate;
+  }
   final UsuarioController usuarioController = UsuarioController(
       repository: UsuarioRepository(
     client: HttpClient(),
@@ -108,12 +120,20 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             maxLength: 100,
                             onChanged: (text) {
                               name = text.split(' ');
-                              usuarioController.atualizarUsuarioNome(
-                                  username: name[0],
-                                  first_name: name[0],
-                                  last_name: name[1]);
-                              SignUpPage.name = name[0];
-                              SignUpPage.surname = name[1];
+                              if (name.length == 1) {
+                                usuarioController.atualizarUsuarioNome(
+                                    username: name[0],
+                                    first_name: name[0],
+                                    last_name: SignUpPage.surname);
+                                SignUpPage.name = name[0];
+                              } else if (name.length >= 2) {
+                                usuarioController.atualizarUsuarioNome(
+                                    username: name[0],
+                                    first_name: name[0],
+                                    last_name: name[1]);
+                                SignUpPage.name = name[0];
+                                SignUpPage.surname = name[1];
+                              }
                             },
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
@@ -366,9 +386,9 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                             inputFormatters: [dateMaskFormatter],
                             controller: _dateTextController,
                             onChanged: (text) {
-                              date = text;
+                              final formattedDate = convertDateFormat(text);
                               usuarioController.atualizarUsuarioDataNascimento(
-                                  dt_nascimento: date);
+                                  dt_nascimento: formattedDate);
                             },
                             keyboardType: TextInputType.url,
                             decoration: InputDecoration(

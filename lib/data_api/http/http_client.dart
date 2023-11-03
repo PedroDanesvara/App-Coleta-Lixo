@@ -50,6 +50,9 @@ class HttpClient implements IHttpClient {
   Future delete({required String url}) async {
     return await client.delete(
       Uri.parse(url),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
     );
   }
 }
