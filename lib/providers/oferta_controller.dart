@@ -26,7 +26,7 @@ class OfertaController {
       final result = await repository.getOfertas();
       ofertas.value = result;
     } on NotFoundException catch (e) {
-      erro.value = e.massage;
+      erro.value = e.message;
     }
     catch (e) {
       print(e);
@@ -62,7 +62,7 @@ class OfertaController {
     try{
       await repository.deleteOferta(idOferta: idOferta);
     } on NotFoundException catch (e) {
-      erro.value = e.massage;
+      erro.value = e.message;
     }
     catch (e) {
       print(e);

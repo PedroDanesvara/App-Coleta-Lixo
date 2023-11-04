@@ -17,21 +17,16 @@ abstract class IUsuarioRepository {
       required String first_name,
       required String last_name});
 
-  atualizarUsuarioEmail(
-      {required String email});
+  atualizarUsuarioEmail({required String email});
 
-  atualizarUsuarioTelefone(
-      {required String telefone});
+  atualizarUsuarioTelefone({required String telefone});
 
-  atualizarUsuarioCpf(
-      {required String cpf});
-    
-  atualizarUsuarioPassword(
-      {required String password});
-    
-  atualizarUsuarioDataNascimento(
-      {required String dt_nascimento});
-  
+  atualizarUsuarioCpf({required String cpf});
+
+  atualizarUsuarioPassword({required String password});
+
+  atualizarUsuarioDataNascimento({required String dt_nascimento});
+
   deletarUsuario();
 }
 
@@ -48,6 +43,9 @@ class UsuarioRepository implements IUsuarioRepository {
       required String password,
       required String telefone,
       required List<String> user_types}) async {
+        Map<String, String> headers = {
+          'Content-Type': 'application/json; charset=UTF-8',
+    };
     final data = {
       "user": {
         "username": username,
@@ -63,7 +61,8 @@ class UsuarioRepository implements IUsuarioRepository {
     print(data);
 
     final response = await client.post(
-        url: 'http://127.0.0.1:8000/api/user/add/', data: data);
+        url: 'http://127.0.0.1:8000/api/user/add/', data: data, 
+        headers: headers);
 
     if (response.statusCode == 201) {
       print("Fiz requisição para API e criei o usuário");
@@ -101,11 +100,8 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   @override
-  atualizarUsuarioEmail(
-      {required String email}) async {
-    final data = {
-      "email": email
-    };
+  atualizarUsuarioEmail({required String email}) async {
+    final data = {"email": email};
 
     print(data);
 
@@ -123,11 +119,8 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   @override
-  atualizarUsuarioTelefone(
-      {required String telefone}) async {
-    final data = {
-      "telefone": telefone
-    };
+  atualizarUsuarioTelefone({required String telefone}) async {
+    final data = {"telefone": telefone};
 
     print(data);
 
@@ -145,11 +138,8 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   @override
-  atualizarUsuarioCpf(
-      {required String cpf}) async {
-    final data = {
-      "cpf": cpf
-    };
+  atualizarUsuarioCpf({required String cpf}) async {
+    final data = {"cpf": cpf};
 
     print(data);
 
@@ -167,11 +157,8 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   @override
-  atualizarUsuarioPassword(
-      {required String password}) async {
-    final data = {
-      "password": password
-    };
+  atualizarUsuarioPassword({required String password}) async {
+    final data = {"password": password};
 
     print(data);
 
@@ -189,11 +176,8 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   @override
-  atualizarUsuarioDataNascimento(
-      {required String dt_nascimento}) async {
-    final data = {
-      "dt_nascimento": dt_nascimento
-    };
+  atualizarUsuarioDataNascimento({required String dt_nascimento}) async {
+    final data = {"dt_nascimento": dt_nascimento};
 
     print(data);
 
@@ -206,14 +190,19 @@ class UsuarioRepository implements IUsuarioRepository {
     } else if (response.statusCode == 404) {
       throw NotFoundException('A url informada não é válida');
     } else {
-      throw Exception('Não foi possível atualizar a data de nascimento do usuário');
+      throw Exception(
+          'Não foi possível atualizar a data de nascimento do usuário');
     }
   }
 
   @override
   deletarUsuario() async {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
     final response = await client.delete(
-        url: 'http://127.0.0.1:8000/api/user/delete/${SignUpPage.name}/');
+        url: 'http://127.0.0.1:8000/api/user/delete/${SignUpPage.name}/', 
+        headers: headers);
 
     if (response.statusCode == 200) {
       print("Fiz requisição para API e deletei o usuário");

@@ -19,7 +19,7 @@ class LoginController {
       final result = await repository.getToken(username: username, password: password);
       token.value = result;
     } on NotFoundException catch (e) {
-      erro.value = e.massage;
+      erro.value = e.message;
     }
     catch (e) {
       print(e.toString());
