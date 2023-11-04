@@ -1,3 +1,6 @@
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/repositories/auth_token_repository.dart';
+import 'package:app_coleta_lixo/providers/login_controller.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +20,30 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   String email = '', password = '';
+  LoginController loginController = LoginController(
+    repository: AuthTokenRepository(
+      client: HttpClient()
+    )
+  );
+
+
+  @override
+  void initState() {
+    super.initState();
+    print("initState da tela de Login");
+
+    loginController.verifyTokenToLogin().then((canAccess) {
+      print("o retorno do verify: ${canAccess}");
+
+      if(canAccess == true){
+        print("Posso acessar direto sem login");
+        Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+      }
+    }); 
+  }
+
 
   Future<bool> _onWillPop(BuildContext context) async {
     bool? willPop = await showDialog(
@@ -133,15 +159,20 @@ class _LoginPageState extends State<LoginPage> {
                                               const Size.fromHeight(50),
                                           shadowColor: Colors.transparent),
                                       onPressed: () {
-                                        if (password != '123' ||
-                                            email != '123') {
-                                          _showSignInAlert();
-                                        } else {
-                                          Navigator.of(context)
-                                              .pushNamedAndRemoveUntil(
-                                                  '/navigator',
-                                                  (route) => false);
-                                        }
+
+                                        loginController.getToken(username: email, password: password).then((token) {
+                                          if(token == ""){
+                                            print("Não veio token, portanto não tem login válido");
+                                            _showSignInAlert();
+                                          }
+                                          else{
+                                              loginController.saveTokenToLogin(keyName: "storageToken", value: "Token ${token}").then((saved) {
+                                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                                  '/navigator', (route) => false
+                                                );
+                                              });
+                                          }
+                                        });
                                       },
                                       child: Text(
                                           style: TextStyle(

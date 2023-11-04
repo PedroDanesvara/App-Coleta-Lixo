@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
+import 'package:app_coleta_lixo/data_api/repositories/oferta_repository.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/create_offer_page.dart';
+import 'package:app_coleta_lixo/providers/oferta_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
@@ -234,6 +237,13 @@ class _CreateOfferPageFinalState extends State<CreateOfferPageFinal> {
                       children: [
                         GestureDetector(
                           onTap: () async {
+                            print('''Dados: ${CreateOfferPage.trashType},
+                                            ${CreateOfferPage.trashValue},
+                                            ${CreateOfferPage.trashWeight},
+                                            ${CreateOfferPage.formattedDate},
+                                            ${CreateOfferPage.formattedTime},
+                                            Formatadim: ${CreateOfferPage.formattedDate} ${CreateOfferPage.formattedTime},
+                                            ''');
                             setState(
                               () {
                                 CreateOfferPage.trashTypeTextController.clear();
@@ -250,7 +260,7 @@ class _CreateOfferPageFinalState extends State<CreateOfferPageFinal> {
                                   ),
                                 );
                               },
-                            );
+                            ); 
                           },
                           child: Icon(
                             Icons.cancel,
@@ -260,11 +270,28 @@ class _CreateOfferPageFinalState extends State<CreateOfferPageFinal> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            CreateOfferPage.trashTypeTextController.clear();
-                            CreateOfferPage.trashWeightTextController.clear();
-                            CreateOfferPage.trashValueTextController.clear();
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, '/confirmationpage', (route) => false);
+                            print("Cliquei em confirmar");
+
+                            OfertaController ofertaController = OfertaController(
+                              repository: OfertaRepository(
+                                client: HttpClient()
+                              )
+                            );
+
+                            final formattedDateAndTime = "${CreateOfferPage.formattedDate} - ${CreateOfferPage.formattedTime}";
+
+                            ofertaController.createOferta(
+                              tipoMaterial: CreateOfferPage.trashType, 
+                              peso: CreateOfferPage.trashWeight, 
+                              valor: CreateOfferPage.trashValue,
+                              agendamento: formattedDateAndTime).then((result) {
+
+                                CreateOfferPage.trashTypeTextController.clear();
+                                CreateOfferPage.trashWeightTextController.clear();
+                                CreateOfferPage.trashValueTextController.clear();
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context, '/confirmationpage', (route) => false);
+                              });
                           },
                           child: Icon(
                             Icons.check_circle,

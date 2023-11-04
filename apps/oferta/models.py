@@ -8,6 +8,11 @@ class Oferta(models.Model):
     valor = models.DecimalField(decimal_places=2, max_digits=10, help_text='Valor calculado pelo app')
     produtor = models.ForeignKey(Produtor, on_delete=models.CASCADE, help_text="Nome do Ofertante", related_name='ofertas')
     gps_coord = models.CharField(max_length=500, help_text="Coordenada gps da coleta")
+    agendamento = models.CharField(max_length=30, help_text='Data e Horário agendados')
 
+    class Meta:
+        verbose_name = "Oferta"
+        verbose_name_plural = "Ofertas"
+        
     def __str__(self):
         return f"{self.tipo_material} - {self.estado} - {self.produtor}"

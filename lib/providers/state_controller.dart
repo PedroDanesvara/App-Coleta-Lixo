@@ -7,7 +7,7 @@ class AppController extends ChangeNotifier {
 
   bool isDarkTheme = false,
       isSignUpCheckboxConfirmed = false,
-      catadorState = false,
+      produtorState = false,
       coletorState = false,
       sucatariaState = false,
       occupationState = false;
@@ -34,7 +34,7 @@ class AppController extends ChangeNotifier {
 
   //Funções para alterar o estado dos Buttons da segunda página de cadastro
   catadorSet() {
-    catadorState = !catadorState;
+    produtorState = !produtorState;
     notifyListeners();
   }
 
