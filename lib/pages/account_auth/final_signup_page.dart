@@ -1,3 +1,4 @@
+import 'package:app_coleta_lixo/pages/account_auth/signup_page.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -8,6 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/state_controller.dart';
+import '../../providers/usuario_controller.dart';
+import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
 
 class FinalSignUpPage extends StatefulWidget {
   const FinalSignUpPage({super.key});
@@ -17,8 +21,15 @@ class FinalSignUpPage extends StatefulWidget {
 }
 
 class _FinalSignUpPageState extends State<FinalSignUpPage> {
+  final UsuarioController usuarioController = UsuarioController(
+      repository: UsuarioRepository(
+    client: HttpClient(),
+  ));
+
+  List<String> user_types = [];
+
   Future<bool> _onWillPop() async {
-    AppController.instance.catadorState = false;
+    AppController.instance.produtorState = false;
     AppController.instance.coletorState = false;
     AppController.instance.sucatariaState = false;
     AppController.instance.occupationState = false;
@@ -126,11 +137,11 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                 Flexible(
                                   child: AnimatedButton(
                                     borderColor:
-                                        AppController.instance.catadorState
+                                        AppController.instance.produtorState
                                             ? const Color(0xFF439472)
                                             : const Color(0xFF959595),
                                     isSelected:
-                                        AppController.instance.catadorState,
+                                        AppController.instance.produtorState,
                                     animationDuration: const Duration(
                                       milliseconds: 300,
                                     ),
@@ -143,10 +154,10 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                     transitionType:
                                         TransitionType.LEFT_TO_RIGHT,
                                     selectedTextColor:
-                                        AppController.instance.catadorState
+                                        AppController.instance.produtorState
                                             ? Colors.white
                                             : MyColors.primary,
-                                    text: 'Catador',
+                                    text: 'Produtor',
                                     textStyle: TextStyle(
                                         color: notifier.darkTheme
                                             ? MyColors.primary[300]
@@ -155,6 +166,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Roboto'),
                                     onPress: () {
+                                      user_types.add("produtor");
                                       AppController.instance.catadorSet();
                                       _isOccupationSelected();
                                     },
@@ -199,6 +211,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Roboto'),
                                     onPress: () {
+                                      user_types.add("coletor");
                                       AppController.instance.coletorSet();
                                       _isOccupationSelected();
                                     },
@@ -244,6 +257,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                       fontFamily: 'Roboto',
                                     ),
                                     onPress: () {
+                                      user_types.add("sucataria");
                                       AppController.instance.sucatariaSet();
                                       _isOccupationSelected();
                                     },
@@ -274,6 +288,14 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                                 255, 255, 255, 255)
                                             : const Color(0xFF959595),
                                     onPress: () {
+                                      usuarioController.criarUsuario(
+                                          username: SignUpPage.name,
+                                          first_name: SignUpPage.name,
+                                          last_name: SignUpPage.surname,
+                                          email: SignUpPage.email,
+                                          password: SignUpPage.password,
+                                          telefone: SignUpPage.phone,
+                                          user_types: user_types);
                                       AppController.instance.occupationState
                                           ? Navigator.of(context)
                                               .pushNamedAndRemoveUntil(
@@ -317,7 +339,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
                                           .instance.occupationState) {
                                         AppController.instance.occupationState =
                                             false;
-                                        AppController.instance.catadorState =
+                                        AppController.instance.produtorState =
                                             false;
                                         AppController.instance.coletorState =
                                             false;
@@ -371,7 +393,7 @@ class _FinalSignUpPageState extends State<FinalSignUpPage> {
 //Área de funções
 
   void _isOccupationSelected() {
-    if (AppController.instance.catadorState ||
+    if (AppController.instance.produtorState ||
         AppController.instance.coletorState ||
         AppController.instance.sucatariaState) {
       AppController.instance.occupationState = true;

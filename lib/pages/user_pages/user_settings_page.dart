@@ -1,5 +1,6 @@
 import 'package:app_coleta_lixo/pages/bottom_bar_pages/bottom_navigator_controller.dart';
 import 'package:app_coleta_lixo/providers/state_controller.dart';
+import '../../providers/usuario_controller.dart';
 import 'package:app_coleta_lixo/services/colors.dart';
 import 'package:app_coleta_lixo/widgets/custom_widgets.dart';
 import 'package:app_coleta_lixo/widgets/theme_save.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:app_coleta_lixo/data_api/repositories/usuario_repository.dart';
+import 'package:app_coleta_lixo/data_api/http/http_client.dart';
 
 class UserSettingsPage extends StatefulWidget {
   const UserSettingsPage({super.key});
@@ -17,6 +20,11 @@ class UserSettingsPage extends StatefulWidget {
 }
 
 class _UserSettingsPageState extends State<UserSettingsPage> {
+  final UsuarioController usuarioController = UsuarioController(
+      repository: UsuarioRepository(
+    client: HttpClient(),
+  ));
+
   _body() {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) {
@@ -283,6 +291,8 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                                                             .primary[500],
                                                       ),
                                                       onPositiveClick: () {
+                                                        usuarioController
+                                                            .deletarUsuario();
                                                         Navigator
                                                             .pushNamedAndRemoveUntil(
                                                                 context,
@@ -424,7 +434,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
                               AppController.instance.isSignUpCheckboxConfirmed =
                                   false;
                               AppController.instance.occupationState = false;
-                              AppController.instance.catadorState = false;
+                              AppController.instance.produtorState = false;
                               AppController.instance.coletorState = false;
                               AppController.instance.sucatariaState = false;
                             },
